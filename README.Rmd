@@ -62,11 +62,19 @@ plot(xsub[xsub$MLRARSYM %in% unlist(ind$except_mlra),], add = TRUE, col = "RED")
 
 Next let's find all of the indicators that can be used in LRR "C" (also known as the "California Subtropical Fruit, Truck, and Specialty Crop Region")
 
-```{r example2}
+```{r example2-LRRC}
 subset(fihs, sapply(usage_symbols, \(x) any(x == "C")), select = c("indicator", "indicator_name"))
 ```
 
-This matches the information we can find in the guide in Appendix 1.
+Compare to LRR "D" (also known as "Western Range and Irrigated Region")
+
+```{r example2-LRRD}
+subset(fihs, sapply(usage_symbols, \(x) any(x == "D")), select = c("indicator", "indicator_name"))
+```
+
+These outputs match the information we can find in the guide in Appendix 1.
+
+Note that the main difference between the LRRs is that indicator "A5" is only approved for use in LRR "C" whereas "A9" is approved for use in LRR "D". "A9" is available for testing in "C", and, in contrast, "A5" is neither available, nor being tested, in LRR "D".
 
 ## Future work
 
