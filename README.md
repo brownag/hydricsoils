@@ -53,9 +53,11 @@ red):
 library(terra)
 #> terra 1.7.73
 x <- vect("/vsizip//vsicurl/https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip/MLRA_52_2022")
+
 ind <- fihs[fihs$indicator == "A9",]
 xsub <- subset(x, x$LRRSYM %in% ind[, 'usage_symbols'][[1]])
-plot(xsub, col = "BLUE")
+plot(x, ext = xsub)
+plot(xsub, add = TRUE, col = "BLUE")
 plot(xsub[xsub$MLRARSYM %in% unlist(ind$except_mlra),], add = TRUE, col = "RED")
 ```
 
