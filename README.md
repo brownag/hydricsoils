@@ -91,7 +91,37 @@ subset(fihs, sapply(usage_symbols, \(x) any(x == "C")), select = c("indicator", 
 #> 38        F8           Redox Depressions
 ```
 
-This matches the information we can find in the guide in Appendix 1.
+Compare to LRR “D” (also known as “Western Range and Irrigated Region”)
+
+``` r
+subset(fihs, sapply(usage_symbols, \(x) any(x == "D")), select = c("indicator", "indicator_name"))
+#>    indicator              indicator_name
+#> 3         A1          Histosol or Histel
+#> 4         A2             Histic Epipedon
+#> 5         A3                Black Histic
+#> 6         A4            Hydrogen Sulfide
+#> 11        A9                   1 cm Muck
+#> 13       A11 Depleted Below Dark Surface
+#> 14       A12          Thick Dark Surface
+#> 21        S1         Sandy Mucky Mineral
+#> 24        S4         Sandy Gleyed Matrix
+#> 25        S5                 Sandy Redox
+#> 26        S6             Stripped Matrix
+#> 33        F1         Loamy Mucky Mineral
+#> 34        F2         Loamy Gleyed Matrix
+#> 35        F3             Depleted Matrix
+#> 36        F6          Redox Dark Surface
+#> 37        F7       Depleted Dark Surface
+#> 38        F8           Redox Depressions
+```
+
+These outputs match the information we can find in the guide in Appendix
+1.
+
+Note that the main difference between the LRRs is that indicator “A5” is
+only approved for use in LRR “C” whereas “A9” is approved for use in LRR
+“D”. “A9” is available for testing in “C”, and, in contrast, “A5” is
+neither available, nor being tested, in LRR “D”.
 
 ## Future work
 
