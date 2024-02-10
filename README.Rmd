@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # {hydricsoils}
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/brownag/hydricsoils/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/brownag/hydricsoils/actions/workflows/R-CMD-check.yaml)
+[![hydricsoils Manual](https://img.shields.io/badge/docs-HTML-informational)](https://humus.rocks/hydricsoils/)
 <!-- badges: end -->
 
 The goal of {hydricsoils} is to provide easy access to definitions, criteria, and area of applicability for 'Field Indicators of Hydric Soils in the United States' and also to provide tools which assist in evaluating associated soil morphology.

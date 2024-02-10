@@ -4,3 +4,7 @@
 ^README\.Rmd$
 ^LICENSE\.md$
 ^FIHS\.pdf$
+^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
