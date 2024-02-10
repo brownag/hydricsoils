@@ -8,4 +8,11 @@
 \description{
 The goal of 'hydricsoils' is to provide easy access to definitions, criteria, and area of applicability for 'Field Indicators of Hydric Soils in the United States' and also to provide tools which assist in evaluating associated soil morphology.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{http://humus.rocks/hydricsoils/}
+}
+
+}
 \keyword{internal}
