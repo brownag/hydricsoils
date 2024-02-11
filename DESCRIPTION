@@ -19,6 +19,7 @@ Imports:
     grDevices
 Suggests: 
     terra,
+    tinytest,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
