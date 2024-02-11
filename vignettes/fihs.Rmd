@@ -17,9 +17,22 @@ knitr::opts_chunk$set(
 ```{r setup, echo=FALSE}
 library(hydricsoils)
 data(fihs, package = "hydricsoils")
+show_plots <- (!inherits(try(requireNamespace("terra", quietly = TRUE), silent = TRUE), 'try-error')  && file.exists(file.path(tools::R_user_dir("hydricsoils", "data"), "lrrmlra.gpkg")))
+
+if (show_plots) {
+  all_ext <- lrrmlra_geometry()
+  conus_ext <- terra::project(terra::subset(all_ext, !all_ext$LRRSYM %in% c("V", "Q", "W1", "W2", "X1", "X2", "Y", "Z")), "EPSG:5070")
+  ak_ext <- terra::project(terra::subset(all_ext, all_ext$LRRSYM %in% c("W1", "W2", "X1", "X2", "Y")), "EPSG:3338")
+}
 ```
 
-```{r fihs1, echo=FALSE, results='asis'}
+This vignette shows the usage, criteria, and notes related to the application of Field Indicators of Hydric Soils in the United States.
+
+Usage ("**Used in:**" section) and testing ("**Test in:**" section) of hydric indicators are generally based on Land Resource Region (denoted by a code with a single letter, or a single letter followed by a single digit). In some cases indicators are used only in specific MLRAs (denoted by a code starting with one or more digits, possibly ending with a single letter) of a region. In other cases, an indicator is used in all parts of a Land Resource Region except for specific MLRAs ("**Except MLRA:**" section)
+
+Extent maps for indicators that are _not_ specific to Alaska are limited to CONUS (using coordinate reference system `"EPSG:5070"`) for clarity. Alaskan indicators are limited to the Alaskan Land Resource Regions (using `"EPSG:3338"`). See `plot_indicator_usage()` to create maps using the full extent (i.e. for details on applicability in Pacific Islands or the Caribbean).
+
+```{r fihs1, echo=FALSE, results='asis', fig.width=8, fig.height=4, fig.align='center', out.width="100%"}
 for (i in seq(nrow(fihs))) {
   f <- fihs[i, ]
   cat("##", f$indicator, " -- ", f$indicator_name, "\n\n")
@@ -30,7 +43,7 @@ for (i in seq(nrow(fihs))) {
     paste0(f$usage_symbols[[1]], collapse = ", "),
     ifelse(
       length(f$except_mlra[[1]]),
-      paste0("\n\n - **Except:** ", paste0(f$except_mlra[[1]], collapse = ", ")),
+      paste0("\n\n - **Except MLRA:** ", paste0(f$except_mlra[[1]], collapse = ", ")),
       ""
     ),
     "\n\n"
@@ -43,7 +56,7 @@ for (i in seq(nrow(fihs))) {
              ""), 
       ifelse(
         length(f$test_except_mlra[[1]]),
-        paste0("\n\n - **Except:** ", paste0(f$test_except_mlra[[1]], collapse = ", ")),
+        paste0("\n\n - **Except MLRA:** ", paste0(f$test_except_mlra[[1]], collapse = ", ")),
         ""
       ),
       "\n\n"
@@ -53,5 +66,16 @@ for (i in seq(nrow(fihs))) {
   if (length(f$notes))
     cat("**User Notes:**\n", f$notes)
   cat("\n\n")
+  
+  if (show_plots) {
+     if (grepl("Alaska", f$indicator_name)) {
+       try(plot_indicator_usage(f$indicator, test_areas = TRUE, ext = ak_ext, crs = "EPSG:3338"), silent = FALSE)
+     } else {
+       try(plot_indicator_usage(f$indicator, test_areas = TRUE, ext = conus_ext, crs = "EPSG:5070"), silent = FALSE)
+     }
+     
+  }
+  cat("\n\n")
+  
 }
 ```

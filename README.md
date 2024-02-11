@@ -33,7 +33,7 @@ indicator “A9” (also known as “1 cm Muck”).
 
 ``` r
 library(hydricsoils)
-#> hydricsoils v0.1.0.9001 -- using:
+#> hydricsoils v0.1.0.9002 -- using:
 #>  - 'Field Indicators of Hydric Soils in the United States' v8.2 (2018)
 #>  - 'Land Resource Regions and Major Land Resource Areas of the United States, the Caribbean, and the Pacific Basin' v5.2 (2022)
 
@@ -48,22 +48,16 @@ subset(fihs, fihs$indicator == "A9", select = c("usage", "usage_symbols", "excep
 
 If we load the MLRA v5.2 database using `lrrmlra_geometry()` (requires
 [{terra}](https://github.com/rspatial/terra/)) we can visualize the
-extent of where the “A9” indicator is used (in blue), and then show the
-MLRA it is excluded from (a portion of LRR “P”, also known as the “South
-Atlantic and Gulf Slope Cash Crops, Forest, and Livestock Region”, in
-red):
+extent of where the “A9” indicator is used.
+
+There is a function in the package called `plot_indicator_usage()` which
+simplifies the process of loading and subsetting the geometry. It
+provides some simple defaults for visualizing areas where usage is
+“Approved”, “Excluded” or in “Testing”.
 
 ``` r
-x <- lrrmlra_geometry()
+plot_indicator_usage("A9", test_areas = TRUE, ext = c("Approved", "Excluded"), plg = list(x = "bottomleft"))
 #> Loading required namespace: terra
-
-ind <- subset(fihs, fihs$indicator == "A9")
-xsub <- terra::subset(x, x$LRRSYM %in% unlist(ind$usage_symbols))
-xexc <- terra::subset(xsub, xsub$MLRARSYM %in% unlist(ind$except_mlra))
-
-terra::plot(x, ext = xsub)
-terra::plot(xsub, add = TRUE, col = "BLUE")
-terra::plot(xexc, add = TRUE, col = "RED")
 ```
 
 <img src="man/figures/README-example1-spatial-1.png" width="100%" />
@@ -133,11 +127,25 @@ approved for use in LRR “C” whereas “A9” is approved for use in LRR “D
 Note that while “A9” is available for testing in “C”, “A5” is not being
 considered for use in LRR “D”.
 
+We can visualize this by expanding the first example to include “A5” in
+a separate pane. We limit the extent to just LRRs “C” and “D”.
+
+``` r
+x <- lrrmlra_geometry()
+xext <- subset(x, x$LRRSYM %in% c("C", "D"))
+
+par(mfrow = c(2, 1))
+plot_indicator_usage("A5", test_areas = TRUE, ext = xext)
+plot_indicator_usage("A9", test_areas = TRUE, ext = xext)
+```
+
+<img src="man/figures/README-example2-spatial-1.png" width="100%" />
+
 ## Future work
 
 In future updates I hope to include:
 
-<!-- use &check; and reference issue/PRs as these are completed -->
+<!-- use :heavy_check_mark: and reference issue/PRs as these are completed -->
 
 - \_ A defined *data.frame* format with standard column names, data
   types, and relationships that are needed to evaluate criteria for all
@@ -149,13 +157,15 @@ In future updates I hope to include:
   figures to specific indicators
 
 - \_ Parsing of LRRs and MLRAs where provisional indicators are being
-  tested (new dataset)
+  tested
 
 - \_ Routines for automatic evaluation of input data to determine which
   indicators may be met
 
-- \_ Spatial methods and helpers for creating graphics depicting where
-  indicators are used or not
+- \_ Spatial methods for determining appropriate indicators to consider
+
+- :heavy_check_mark: Helpers for creating graphics depicting where
+  indicators are used or not (DONE: see `plot_indicator_usage()`)
 
 ## Disclaimer
 
