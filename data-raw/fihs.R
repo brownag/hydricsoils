@@ -112,9 +112,10 @@ dout$usage <- sapply(dout$body, \(z) ifelse(grepl("^For use (in|along)", z[[1]])
 dout$criteria <- sapply(dout$body, \(z) na.omit(z[2:length(z)]))
 
 # fix for F21 (misuse of semicolons)
-dout$usage <- gsub("For use in MLRA 127 of LRR N; MLRA 145 of LRR R; and MLRAs 147 and 148 of LRR S;", "For use in MLRAs 127, 145, 147 and 148;", dout$usage)
+dout$usage <- gsub("For use in MLRA 127 of LRR N; MLRA 145 of LRR R; and MLRAs 147 and 148 of LRR S;", "For use in MLRA 127 of LRR N, MLRA 145 of LRR R, and MLRAs 147 and 148 of LRR S;", dout$usage)
 
 dout$usage <- gsub("[^;]( for testing in)", ";\\1", dout$usage)
+dout$usage[dout$usage == ""] <- "For use in all LRRs"
 dout$usage_symbols <- gsub("For use[^;]*in LRRs* ([^;]*);*.*$", "\\1", dout$usage)
 dout$usage_symbols <- gsub(",* and ([A-Z])", ", \\1", dout$usage_symbols)
 
@@ -123,11 +124,22 @@ dout$usage_symbols <- gsub("and portions of LRR P outside of MLRA 136",
                            "(except for MLRAs 133A, 133B, 133C, 134, 135A, 135B, 136, 137, and 138)",
                            dout$usage_symbols)
 
+# fix for F1
+dout$usage_symbols <- gsub("those using A7 (LRRs P, T, U, Z), MLRA 1 of LRR A",
+                           "P, T, U, Z", dout$usage_symbols, fixed = TRUE)
+
 # fix for F13
 dout$usage_symbols <- gsub("MLRA 122 of LRR N", "122", dout$usage_symbols)
 
+# fix for F18
+dout$usage_symbols <- gsub("150\\b", "150A, 150B", dout$usage_symbols)
+
 dout$except_mlra <- gsub(".*\\(except for MLRAs* (.*)\\).*|.*", "\\1", dout$usage_symbols)
 dout$except_mlra <- gsub(",* and ", ", ", dout$except_mlra)
+
+# fix for F1
+dout$except_mlra[which(dout$indicator == "F1")] <- "1"
+
 dout$except_mlra <- lapply(strsplit(dout$except_mlra, ","), trimws)
 dout$usage_symbols <- gsub("(.*)\\(except for MLRAs* .*\\)(.*)", "\\1\\2", dout$usage_symbols)
 
@@ -135,6 +147,10 @@ dout$except_lrrsymbols1 <- gsub("For use in all LRRs, except [for ]*([^;]*).*|.*
 dout$usage_symbols <- gsub("For use in all LRRs.*", paste0(LETTERS, collapse = ", "), dout$usage_symbols)
 
 dout$usage_mlras <- gsub("and", ",", gsub("of LRR [A-Z]|in|MLRAs*|West Florida portions of|;.*", "", gsub("For use in MLRAs*(.*)|.*", "\\1", dout$usage_symbols)))
+
+# convert to split Alaska LRRs for 2022 spatial
+dout$usage_symbols <- gsub("W, X", "W1, W2, X1, X2", dout$usage_symbols)
+dout$except_lrrsymbols1 <- gsub("W, X", "W1, W2, X1, X2", dout$except_lrrsymbols1)
 
 dout$usage_symbols <- sapply(strsplit(dout$usage_symbols, ","), trimws)
 dout$except_lrrsymbols1 <- sapply(strsplit(dout$except_lrrsymbols1, ","), trimws)
@@ -146,10 +162,6 @@ dout$usage_symbols[mlra.spec.idx] <- dout$usage_mlras[mlra.spec.idx]
 for (u in seq(dout$usage_symbols)) {
   dout$usage_symbols[[u]] <- setdiff(dout$usage_symbols[[u]], dout$except_lrrsymbols1[[u]])
 }
-
-fill.lrr.idx <- which(sapply(dout$usage_symbols, length) == 0)
-dout$usage[fill.lrr.idx] <- "For use in all LRRs"
-dout$usage_symbols[fill.lrr.idx] <- lapply(seq(fill.lrr.idx), \(i) LETTERS)
 
 # subset(dout, grepl("; for testing", dout$usage), select = c(indicator, usage))
 
@@ -166,6 +178,9 @@ for (i in test.all.other.idx) {
   dout$test_symbols[i] <- paste0(LETTERS[!LETTERS %in% dout$usage_symbols[i][[1]]], collapse = ", ")
 }
 
+# convert to split Alaska LRRs for 2022 spatial
+dout$test_symbols <- gsub("W, X", "W1, W2, X1, X2", dout$test_symbols)
+
 dout$test_symbols <- lapply(strsplit(dout$test_symbols, ","), trimws)
 dout$test_except_mlra <- lapply(strsplit(dout$test_except_mlra, ","), trimws)
 
@@ -173,7 +188,6 @@ dout$test_except_mlra <- lapply(strsplit(dout$test_except_mlra, ","), trimws)
 dout$except_mlra <- lapply(seq(dout$except_mlra), function(i) {
   dout$except_mlra[[i]][!dout$except_mlra[[i]] %in% dout$test_except_mlra[[i]]]
 })
-
 
 # subset(dout, grepl("; for testing", dout$usage), select = c(indicator, usage, test_symbols))
 
