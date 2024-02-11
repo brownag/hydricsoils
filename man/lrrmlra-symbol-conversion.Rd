@@ -45,6 +45,9 @@ lrr_to_lrrname("D")
 lrrname_to_lrr("California Subtropical Fruit, Truck, and Specialty Crop Region")
 
 }
+\references{
+United States Department of Agriculture, Natural Resources Conservation Service. 2022. Land resource regions and major land resource areas of the United States, the Caribbean, and the Pacific Basin. U.S. Department of Agriculture, Agriculture Handbook 296. Available online: \url{https://www.nrcs.usda.gov/resources/data-and-reports/major-land-resource-area-mlra}
+}
 \seealso{
 \link{lrrmlra}
 }

@@ -8,6 +8,9 @@
 #' @export
 #' @seealso [lrrmlra]
 #' @rdname lrrmlra-symbol-conversion
+#'
+#' @references United States Department of Agriculture, Natural Resources Conservation Service. 2022. Land resource regions and major land resource areas of the United States, the Caribbean, and the Pacific Basin. U.S. Department of Agriculture, Agriculture Handbook 296. Available online: <https://www.nrcs.usda.gov/resources/data-and-reports/major-land-resource-area-mlra>
+#'
 #' @examples
 #'
 #' mlra_to_lrr(c("18", "22A"))
