@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">hydricsoils</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9002</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,6 +43,9 @@
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="articles/fihs.html">Field Indicators of Hydric Soils in the United States</a>
   </div>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="news/index.html">Changelog</a>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -86,7 +89,7 @@
 <p>This basic example shows how to determine the area of applicability of indicator “A9” (also known as “1 cm Muck”).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/brownag/hydricsoils/" class="external-link">hydricsoils</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; hydricsoils v0.1.0.9001 -- using:</span></span>
+<span><span class="co">#&gt; hydricsoils v0.1.0.9002 -- using:</span></span>
 <span><span class="co">#&gt;  - 'Field Indicators of Hydric Soils in the United States' v8.2 (2018)</span></span>
 <span><span class="co">#&gt;  - 'Land Resource Regions and Major Land Resource Areas of the United States, the Caribbean, and the Pacific Basin' v5.2 (2022)</span></span>
 <span></span>
@@ -97,20 +100,11 @@
 <span><span class="co">#&gt; 11 For use in LRRs D, F, G, H, P (except for MLRA 136), and T; for testing in LRRs C, I, J, and O</span></span>
 <span><span class="co">#&gt;       usage_symbols except_mlra</span></span>
 <span><span class="co">#&gt; 11 D, F, G, H, P, T         136</span></span></code></pre></div>
-<p>If we load the MLRA v5.2 database, for instance using {terra}, we can visualize the extent of where the “A9” indicator is used (in blue), and then show the MLRA it is excluded from (a portion of LRR “P”, also known as the “South Atlantic and Gulf Slope Cash Crops, Forest, and Livestock Region”, in red):</p>
+<p>If we load the MLRA v5.2 database using <code><a href="reference/lrrmlra-geometry.html">lrrmlra_geometry()</a></code> (requires <a href="https://github.com/rspatial/terra/" class="external-link">{terra}</a>) we can visualize the extent of where the “A9” indicator is used.</p>
+<p>There is a function in the package called <code><a href="reference/plot_indicator_usage.html">plot_indicator_usage()</a></code> which simplifies the process of loading and subsetting the geometry. It provides some simple defaults for visualizing areas where usage is “Approved”, “Excluded” or in “Testing”.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; terra 1.7.73</span></span>
-<span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="st">"/vsizip//vsicurl/https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip/MLRA_52_2022"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ind</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">fihs</span>, <span class="va">fihs</span><span class="op">$</span><span class="va">indicator</span> <span class="op">==</span> <span class="st">"A9"</span><span class="op">)</span></span>
-<span><span class="va">xsub</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span><span class="op">$</span><span class="va">LRRSYM</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">ind</span><span class="op">$</span><span class="va">usage_symbols</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">xexc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">xsub</span>, <span class="va">xsub</span><span class="op">$</span><span class="va">MLRARSYM</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">ind</span><span class="op">$</span><span class="va">except_mlra</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">x</span>, ext <span class="op">=</span> <span class="va">xsub</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">xsub</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="st">"BLUE"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">xexc</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="st">"RED"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_indicator_usage.html">plot_indicator_usage</a></span><span class="op">(</span><span class="st">"A9"</span>, test_areas <span class="op">=</span> <span class="cn">TRUE</span>, ext <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Approved"</span>, <span class="st">"Excluded"</span><span class="op">)</span>, plg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"bottomleft"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required namespace: terra</span></span></code></pre></div>
 <p><img src="reference/figures/README-example1-spatial-1.png" width="100%"></p>
 </div>
 <div class="section level3">
@@ -162,21 +156,30 @@
 <p>These outputs match the information we can find in the guide in Appendix 1.</p>
 <p>It is important to remember that the area of applicability across Land Resource Regions and Major Land Resource Areas can subtly differ.</p>
 <p>The main difference between LRRs “C” and “D” is that indicator “A5” is approved for use in LRR “C” whereas “A9” is approved for use in LRR “D”. Note that while “A9” is available for testing in “C”, “A5” is not being considered for use in LRR “D”.</p>
+<p>We can visualize this by expanding the first example to include “A5” in a separate pane. We limit the extent to just LRRs “C” and “D”.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/lrrmlra-geometry.html">lrrmlra_geometry</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">xext</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span><span class="op">$</span><span class="va">LRRSYM</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"C"</span>, <span class="st">"D"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot_indicator_usage.html">plot_indicator_usage</a></span><span class="op">(</span><span class="st">"A5"</span>, test_areas <span class="op">=</span> <span class="cn">TRUE</span>, ext <span class="op">=</span> <span class="va">xext</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot_indicator_usage.html">plot_indicator_usage</a></span><span class="op">(</span><span class="st">"A9"</span>, test_areas <span class="op">=</span> <span class="cn">TRUE</span>, ext <span class="op">=</span> <span class="va">xext</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-example2-spatial-1.png" width="100%"></p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="future-work">Future work<a class="anchor" aria-label="anchor" href="#future-work"></a>
 </h2>
 <p>In future updates I hope to include:</p>
-<!-- use &check; and reference issue/PRs as these are completed -->
+<!-- use :heavy_check_mark: and reference issue/PRs as these are completed -->
 <ul>
 <li><p>_ A defined <em>data.frame</em> format with standard column names, data types, and relationships that are needed to evaluate criteria for all established and provisional indicators</p></li>
 <li><p>_ A glossary with definitions of key criteria and terms</p></li>
 <li><p>_ An index to figures and pictures from the guide, and mapping of figures to specific indicators</p></li>
-<li><p>_ Parsing of LRRs and MLRAs where established indicators are being tested (new columns in existing dataset, or new dataset)</p></li>
-<li><p>_ Parsing of LRRs and MLRAs where provisional indicators are being tested (new dataset)</p></li>
+<li><p>_ Parsing of LRRs and MLRAs where provisional indicators are being tested</p></li>
 <li><p>_ Routines for automatic evaluation of input data to determine which indicators may be met</p></li>
-<li><p>_ Spatial methods and helpers for creating graphics depicting where indicators are used or not</p></li>
+<li><p>_ Spatial methods for determining appropriate indicators to consider</p></li>
+<li><p><span class="emoji" data-emoji="heavy_check_mark">✔️</span> Helpers for creating graphics depicting where indicators are used or not (DONE: see <code><a href="reference/plot_indicator_usage.html">plot_indicator_usage()</a></code>)</p></li>
 </ul>
 </div>
 <div class="section level2">

@@ -19,6 +19,9 @@
     <loc>http://humus.rocks/hydricsoils/index.html</loc>
   </url>
   <url>
+    <loc>http://humus.rocks/hydricsoils/news/index.html</loc>
+  </url>
+  <url>
     <loc>http://humus.rocks/hydricsoils/reference/fihs.html</loc>
   </url>
   <url>
@@ -28,9 +31,15 @@
     <loc>http://humus.rocks/hydricsoils/reference/index.html</loc>
   </url>
   <url>
+    <loc>http://humus.rocks/hydricsoils/reference/lrrmlra-geometry.html</loc>
+  </url>
+  <url>
     <loc>http://humus.rocks/hydricsoils/reference/lrrmlra-symbol-conversion.html</loc>
   </url>
   <url>
     <loc>http://humus.rocks/hydricsoils/reference/lrrmlra.html</loc>
+  </url>
+  <url>
+    <loc>http://humus.rocks/hydricsoils/reference/plot_indicator_usage.html</loc>
   </url>
 </urlset>
