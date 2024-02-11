@@ -29,14 +29,17 @@ remotes::install_github("brownag/hydricsoils")
 ### Example 1
 
 This basic example shows how to determine the area of applicability of
-indicator “A9” (also known as “1cm Muck”).
+indicator “A9” (also known as “1 cm Muck”).
 
 ``` r
 library(hydricsoils)
+#> hydricsoils v0.1.0.9001 -- using:
+#>  - 'Field Indicators of Hydric Soils in the United States' v8.2 (2018)
+#>  - 'Land Resource Regions and Major Land Resource Areas of the United States, the Caribbean, and the Pacific Basin' v5.2 (2022)
 
 data(fihs, package = "hydricsoils")
 
-subset(fihs, indicator == "A9", select = c("usage", "usage_symbols", "except_mlra"))
+subset(fihs, fihs$indicator == "A9", select = c("usage", "usage_symbols", "except_mlra"))
 #>                                                                                             usage
 #> 11 For use in LRRs D, F, G, H, P (except for MLRA 136), and T; for testing in LRRs C, I, J, and O
 #>       usage_symbols except_mlra
@@ -45,20 +48,23 @@ subset(fihs, indicator == "A9", select = c("usage", "usage_symbols", "except_mlr
 
 If we load the MLRA v5.2 database, for instance using {terra}, we can
 visualize the extent of where the “A9” indicator is used (in blue), and
-then show the MLRA it is excluded from (a portion of LRR P, “South
-Atlantic and Gulf Slope Cash Crops, Forest, and Livestock Region”, in
-red):
+then show the MLRA it is excluded from (a portion of LRR “P”, also known
+as the “South Atlantic and Gulf Slope Cash Crops, Forest, and Livestock
+Region”, in red):
 
 ``` r
 library(terra)
 #> terra 1.7.73
+
 x <- vect("/vsizip//vsicurl/https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip/MLRA_52_2022")
 
-ind <- fihs[fihs$indicator == "A9",]
-xsub <- subset(x, x$LRRSYM %in% ind[, 'usage_symbols'][[1]])
+ind <- subset(fihs, fihs$indicator == "A9")
+xsub <- subset(x, x$LRRSYM %in% unlist(ind$usage_symbols))
+xexc <- subset(xsub, xsub$MLRARSYM %in% unlist(ind$except_mlra))
+
 plot(x, ext = xsub)
 plot(xsub, add = TRUE, col = "BLUE")
-plot(xsub[xsub$MLRARSYM %in% unlist(ind$except_mlra),], add = TRUE, col = "RED")
+plot(xexc, add = TRUE, col = "RED")
 ```
 
 <img src="man/figures/README-example1-spatial-1.png" width="100%" />
@@ -70,7 +76,7 @@ known as the “California Subtropical Fruit, Truck, and Specialty Crop
 Region”)
 
 ``` r
-subset(fihs, sapply(usage_symbols, \(x) any(x == "C")), select = c("indicator", "indicator_name"))
+subset(fihs, sapply(fihs$usage_symbols, \(x) any(x == "C")), select = c("indicator", "indicator_name"))
 #>    indicator              indicator_name
 #> 3         A1          Histosol or Histel
 #> 4         A2             Histic Epipedon
@@ -91,10 +97,12 @@ subset(fihs, sapply(usage_symbols, \(x) any(x == "C")), select = c("indicator", 
 #> 38        F8           Redox Depressions
 ```
 
-Compare to LRR “D” (also known as “Western Range and Irrigated Region”)
+Compare to LRR “D” (also known as the “Western Range and Irrigated
+Region”)
 
 ``` r
-subset(fihs, sapply(usage_symbols, \(x) any(x == "D")), select = c("indicator", "indicator_name"))
+subset(fihs, sapply(fihs$usage_symbols, \(x) any(x == "D")), 
+       select = c("indicator", "indicator_name"))
 #>    indicator              indicator_name
 #> 3         A1          Histosol or Histel
 #> 4         A2             Histic Epipedon
@@ -118,34 +126,39 @@ subset(fihs, sapply(usage_symbols, \(x) any(x == "D")), select = c("indicator", 
 These outputs match the information we can find in the guide in Appendix
 1.
 
-Note that the main difference between the LRRs is that indicator “A5” is
-only approved for use in LRR “C” whereas “A9” is approved for use in LRR
-“D”. “A9” is available for testing in “C”, and, in contrast, “A5” is
-neither available, nor being tested, in LRR “D”.
+It is important to remember that the area of applicability across Land
+Resource Regions and Major Land Resource Areas can subtly differ.
+
+The main difference between LRRs “C” and “D” is that indicator “A5” is
+approved for use in LRR “C” whereas “A9” is approved for use in LRR “D”.
+Note that while “A9” is available for testing in “C”, “A5” is not being
+considered for use in LRR “D”.
 
 ## Future work
 
 In future updates I hope to include:
 
-- A defined *data.frame* format with standard column names, data types,
-  and relationships that are needed to evaluate criteria for all
+<!-- use &check; and reference issue/PRs as these are completed -->
+
+- \_ A defined *data.frame* format with standard column names, data
+  types, and relationships that are needed to evaluate criteria for all
   established and provisional indicators
 
-- A glossary with definitions of key criteria and terms
+- \_ A glossary with definitions of key criteria and terms
 
-- An index to figures and pictures from the guide, and mapping of
+- \_ An index to figures and pictures from the guide, and mapping of
   figures to specific indicators
 
-- Parsing of LRRs and MLRAs where established indicators are being
+- \_ Parsing of LRRs and MLRAs where established indicators are being
   tested (new columns in existing dataset, or new dataset)
 
-- Parsing of LRRs and MLRAs where provisional indicators are being
+- \_ Parsing of LRRs and MLRAs where provisional indicators are being
   tested (new dataset)
 
-- Routines for automatic evaluation of input data to determine which
+- \_ Routines for automatic evaluation of input data to determine which
   indicators may be met
 
-- Spatial methods and helpers for creating graphics depicting where
+- \_ Spatial methods and helpers for creating graphics depicting where
   indicators are used or not
 
 ## Disclaimer
@@ -172,3 +185,9 @@ Version 8.2. L.M. Vasilas, G.W. Hurt, and J.F. Berkowitz (eds.). USDA,
 NRCS, in cooperation with the National Technical Committee for Hydric
 Soils. Available online:
 <https://www.nrcs.usda.gov/resources/guides-and-instructions/field-indicators-of-hydric-soils>
+
+United States Department of Agriculture, Natural Resources Conservation
+Service. 2022. Land resource regions and major land resource areas of
+the United States, the Caribbean, and the Pacific Basin. U.S. Department
+of Agriculture, Agriculture Handbook 296. Available online:
+<https://www.nrcs.usda.gov/resources/data-and-reports/major-land-resource-area-mlra>

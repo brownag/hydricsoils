@@ -4,14 +4,16 @@
 \name{hydricsoils-package}
 \alias{hydricsoils}
 \alias{hydricsoils-package}
-\title{hydricsoils: Tools for working with 'Field Indicators of Hydric Soils' and related data}
+\title{hydricsoils: Tools for 'Field Indicators of Hydric Soils in the United States'}
 \description{
 The goal of 'hydricsoils' is to provide easy access to definitions, criteria, and area of applicability for 'Field Indicators of Hydric Soils in the United States' and also to provide tools which assist in evaluating associated soil morphology.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://humus.rocks/hydricsoils/}
+  \item \url{https://github.com/brownag/hydricsoils/}
+  \item \url{https://humus.rocks/hydricsoils/}
+  \item Report bugs at \url{https://github.com/brownag/hydricsoils/issues/}
 }
 
 }

@@ -1,14 +1,21 @@
 Package: hydricsoils
 Type: Package
-Title: Tools for working with 'Field Indicators of Hydric Soils' and related data
-Version: 0.1.0
+Title: Tools for 'Field Indicators of Hydric Soils in the United States' 
+Version: 0.1.0.9001
 Author: Andrew G. Brown
 Maintainer: Andrew G. Brown <brown.andrewg@gmail.com>
 Description: The goal of 'hydricsoils' is to provide easy access to definitions, criteria, and area of applicability for 'Field Indicators of Hydric Soils in the United States' and also to provide tools which assist in evaluating associated soil morphology.
 License: CC0
 Encoding: UTF-8
 LazyData: false
-Depends: R (>= 3.6.3)
+Depends: R (>= 4.0.0)
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
-URL: http://humus.rocks/hydricsoils/
+URL: https://github.com/brownag/hydricsoils/, https://humus.rocks/hydricsoils/
+BugReports: https://github.com/brownag/hydricsoils/issues/
+Imports: 
+    utils
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
