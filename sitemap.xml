@@ -7,6 +7,12 @@
     <loc>http://humus.rocks/hydricsoils/LICENSE.html</loc>
   </url>
   <url>
+    <loc>http://humus.rocks/hydricsoils/articles/fihs.html</loc>
+  </url>
+  <url>
+    <loc>http://humus.rocks/hydricsoils/articles/index.html</loc>
+  </url>
+  <url>
     <loc>http://humus.rocks/hydricsoils/authors.html</loc>
   </url>
   <url>
@@ -20,5 +26,11 @@
   </url>
   <url>
     <loc>http://humus.rocks/hydricsoils/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>http://humus.rocks/hydricsoils/reference/lrrmlra-symbol-conversion.html</loc>
+  </url>
+  <url>
+    <loc>http://humus.rocks/hydricsoils/reference/lrrmlra.html</loc>
   </url>
 </urlset>
