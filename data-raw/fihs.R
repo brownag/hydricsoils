@@ -6,6 +6,12 @@
 # # remove figure captions manually
 x <- readLines("inst/extdata/FIHS.txt", warn = FALSE)
 f <- readLines("inst/extdata/FIGS.txt", warn = FALSE)
+
+## metadata, added as attributes
+VERSION <- "8.2"
+VERSION_YEAR <- "2018"
+REFERENCE <- "United States Department of Agriculture, Natural Resources Conservation Service. 2018. Field Indicators of Hydric Soils in the United States, Version 8.2. L.M. Vasilas, G.W. Hurt, and J.F. Berkowitz (eds.). USDA, NRCS, in cooperation with the National Technical Committee for Hydric Soils. Available online: <https://www.nrcs.usda.gov/resources/guides-and-instructions/field-indicators-of-hydric-soils>"
+
 #
 ##
 ## something like this might be able to automate:
@@ -19,8 +25,11 @@ f <- readLines("inst/extdata/FIGS.txt", warn = FALSE)
 idx <- grep("^All Soils$|^Sandy Soils$|^Loamy and Clayey Soils$|Test Indicators of Hydric Soils$|^\\f\\fAccessibility Statement$", x)
 x <- gsub("(for use in all LRRs) or Histel (for", "or Histel. ", x, fixed = TRUE)
 x <- gsub("use in LRRs with permafrost). ", "", x, fixed = TRUE)
-# x <- gsub("\\b([ab])\\. ", "(\\1)", x)
-# x <- gsub("fig(s*)\\.", "Figure\\1", x)
+x <- gsub("from12 to18 percent", "from 12 to 18 percent", x)
+x <- gsub("dune-and- swale", "dune-and-swale", x)
+x <- gsub("T, U, W, X, Y , and Z", "T, U, W, X, Y, and Z", x)
+x <- gsub("\\b([a-f])\\. ", "(\\1) ", x)
+x <- gsub("fig(s*)\\.", "Figure\\1", x)
 x[grep("A1.\u2014", x) + 1]
 sec.idx <- c(idx - 1, length(x))
 sec.len <- diff(c(0, sec.idx))
@@ -102,14 +111,27 @@ rownames(dout) <- NULL
 dout$usage <- sapply(dout$body, \(z) ifelse(grepl("^For use (in|along)", z[[1]]), z[[1]], ""))
 dout$criteria <- sapply(dout$body, \(z) na.omit(z[2:length(z)]))
 
+# fix for F21 (misuse of semicolons)
+dout$usage <- gsub("For use in MLRA 127 of LRR N; MLRA 145 of LRR R; and MLRAs 147 and 148 of LRR S;", "For use in MLRAs 127, 145, 147 and 148;", dout$usage)
+
 dout$usage <- gsub("[^;]( for testing in)", ";\\1", dout$usage)
 dout$usage_symbols <- gsub("For use[^;]*in LRRs* ([^;]*);*.*$", "\\1", dout$usage)
 dout$usage_symbols <- gsub(",* and ([A-Z])", ", \\1", dout$usage_symbols)
 
+## fix for S1
+dout$usage_symbols <- gsub("and portions of LRR P outside of MLRA 136",
+                           "(except for MLRAs 133A, 133B, 133C, 134, 135A, 135B, 136, 137, and 138)",
+                           dout$usage_symbols)
+
+# fix for F13
+dout$usage_symbols <- gsub("MLRA 122 of LRR N", "122", dout$usage_symbols)
+
 dout$except_mlra <- gsub(".*\\(except for MLRAs* (.*)\\).*|.*", "\\1", dout$usage_symbols)
+dout$except_mlra <- gsub(",* and ", ", ", dout$except_mlra)
+dout$except_mlra <- lapply(strsplit(dout$except_mlra, ","), trimws)
 dout$usage_symbols <- gsub("(.*)\\(except for MLRAs* .*\\)(.*)", "\\1\\2", dout$usage_symbols)
 
-dout$except_lrrsymbols1 <- gsub("For use in all LRRs, except for ([^;]*).*|.*", "\\1", dout$usage_symbols)
+dout$except_lrrsymbols1 <- gsub("For use in all LRRs, except [for ]*([^;]*).*|.*", "\\1", dout$usage_symbols)
 dout$usage_symbols <- gsub("For use in all LRRs.*", paste0(LETTERS, collapse = ", "), dout$usage_symbols)
 
 dout$usage_mlras <- gsub("and", ",", gsub("of LRR [A-Z]|in|MLRAs*|West Florida portions of|;.*", "", gsub("For use in MLRAs*(.*)|.*", "\\1", dout$usage_symbols)))
@@ -129,24 +151,64 @@ fill.lrr.idx <- which(sapply(dout$usage_symbols, length) == 0)
 dout$usage[fill.lrr.idx] <- "For use in all LRRs"
 dout$usage_symbols[fill.lrr.idx] <- lapply(seq(fill.lrr.idx), \(i) LETTERS)
 
-# TODO: testing symbols
+# subset(dout, grepl("; for testing", dout$usage), select = c(indicator, usage))
+
+dout$test_symbols <- gsub(".*; for testing [io]n (.*)$|.*", "\\1", dout$usage)
+dout$test_except_mlra <- gsub(".*\\(except for MLRAs* (.*)\\).*|.*", "\\1", dout$test_symbols)
+dout$test_symbols <- gsub("(.*)\\(except for MLRAs* .*\\).*|(.*)", "\\1\\2", dout$test_symbols)
+dout$test_symbols <- gsub("(^MLRAs*|^LRRs*|^other MLRAs of LRR| of LRR [A-Z]|^flood plains subject to Piedmont deposition throughout LRRs )",
+                          "", dout$test_symbols)
+dout$test_symbols <- gsub("^all.*", "All other LRRs", dout$test_symbols)
+dout$test_symbols <- trimws(gsub(",* and ", ", ", dout$test_symbols))
+
+test.all.other.idx <- grep("All other LRRs", dout$test_symbols)
+for (i in test.all.other.idx) {
+  dout$test_symbols[i] <- paste0(LETTERS[!LETTERS %in% dout$usage_symbols[i][[1]]], collapse = ", ")
+}
+
+dout$test_symbols <- lapply(strsplit(dout$test_symbols, ","), trimws)
+dout$test_except_mlra <- lapply(strsplit(dout$test_except_mlra, ","), trimws)
+
+# remove testing exceptions from approved exceptions
+dout$except_mlra <- lapply(seq(dout$except_mlra), function(i) {
+  dout$except_mlra[[i]][!dout$except_mlra[[i]] %in% dout$test_except_mlra[[i]]]
+})
+
+
+# subset(dout, grepl("; for testing", dout$usage), select = c(indicator, usage, test_symbols))
+
+
+dout$criteria <- sapply(dout$criteria, paste0, collapse = ". \n")
+dout$criteria <- gsub("  ", " ", dout$criteria)
+dout$criteria <- gsub("\\.\\.", ".", dout$criteria)
 
 fihs <- dout
 fihs[[2]] <- NULL
 fihs$body <- NULL
 
 fihs <- subset(fihs, grepl( "T*[ASF]\\d+", fihs$indicator))
+
+replaceUnicodeChars <- function(x) {
+  gsub("\u2264", "<=", x) |>
+    gsub("\u2265", ">=", x = _) |>
+    gsub("\u201c|\u201d", "\"", x = _)
+}
+
+fihs$criteria <- stringi::stri_enc_toascii(replaceUnicodeChars(fihs$criteria))
+fihs$note <- stringi::stri_enc_toascii(replaceUnicodeChars(fihs$note))
+
 fihs_test <- subset(fihs, grepl("(Test)", fihs$section))
 fihs <- subset(fihs, !grepl("(Test)", fihs$section))
-fihs <- fihs[c("section", "indicator", "indicator_name",
-               "page", "usage", "usage_symbols", "except_mlra", "criteria", "note")]
-
-
-fihs$criteria <- stringi::stri_enc_toascii(fihs$criteria)
-fihs$note <- stringi::stri_enc_toascii(fihs$note)
+fihs <- fihs[c("section", "indicator", "indicator_name", "page",
+               "usage", "usage_symbols", "except_mlra", "test_symbols", "test_except_mlra",
+               "criteria", "note")]
 
 if (interactive())
   View(fihs)
+
+attr(fihs, 'version') <- VERSION
+attr(fihs, 'version_year') <- VERSION_YEAR
+attr(fihs, 'reference') <- REFERENCE
 usethis::use_data(fihs, overwrite = TRUE)
 
 ## TODO: fihs_test dataset; need to confirm where they are being tested

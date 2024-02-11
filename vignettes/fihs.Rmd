@@ -1,0 +1,57 @@
+---
+title: "Field Indicators of Hydric Soils in the United States"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Field Indicators of Hydric Soils in the United States}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo=FALSE}
+library(hydricsoils)
+data(fihs, package = "hydricsoils")
+```
+
+```{r fihs1, echo=FALSE, results='asis'}
+for (i in seq(nrow(fihs))) {
+  f <- fihs[i, ]
+  cat("##", f$indicator, " -- ", f$indicator_name, "\n\n")
+  
+  cat(f$usage, "\n\n")
+  cat(
+    "**Used in:** ",
+    paste0(f$usage_symbols[[1]], collapse = ", "),
+    ifelse(
+      length(f$except_mlra[[1]]),
+      paste0("\n\n - **Except:** ", paste0(f$except_mlra[[1]], collapse = ", ")),
+      ""
+    ),
+    "\n\n"
+  )
+  if (length(f$test_symbols[[1]]) || length(f$test_except_mlra[[1]])) {
+    cat(
+      "**Test in:** ",
+      ifelse(length(f$test_symbols[[1]]),
+             paste0(f$test_symbols[[1]], collapse = ", "),
+             ""), 
+      ifelse(
+        length(f$test_except_mlra[[1]]),
+        paste0("\n\n - **Except:** ", paste0(f$test_except_mlra[[1]], collapse = ", ")),
+        ""
+      ),
+      "\n\n"
+    )
+  }
+  cat("**Criteria:**\n", f$criteria)
+  if (length(f$notes))
+    cat("**User Notes:**\n", f$notes)
+  cat("\n\n")
+}
+```
