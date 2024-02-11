@@ -46,25 +46,24 @@ subset(fihs, fihs$indicator == "A9", select = c("usage", "usage_symbols", "excep
 #> 11 D, F, G, H, P, T         136
 ```
 
-If we load the MLRA v5.2 database, for instance using {terra}, we can
-visualize the extent of where the “A9” indicator is used (in blue), and
-then show the MLRA it is excluded from (a portion of LRR “P”, also known
-as the “South Atlantic and Gulf Slope Cash Crops, Forest, and Livestock
-Region”, in red):
+If we load the MLRA v5.2 database using `lrrmlra_geometry()` (requires
+[{terra}](https://github.com/rspatial/terra/)) we can visualize the
+extent of where the “A9” indicator is used (in blue), and then show the
+MLRA it is excluded from (a portion of LRR “P”, also known as the “South
+Atlantic and Gulf Slope Cash Crops, Forest, and Livestock Region”, in
+red):
 
 ``` r
-library(terra)
-#> terra 1.7.73
-
-x <- vect("/vsizip//vsicurl/https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip/MLRA_52_2022")
+x <- lrrmlra_geometry()
+#> Loading required namespace: terra
 
 ind <- subset(fihs, fihs$indicator == "A9")
-xsub <- subset(x, x$LRRSYM %in% unlist(ind$usage_symbols))
-xexc <- subset(xsub, xsub$MLRARSYM %in% unlist(ind$except_mlra))
+xsub <- terra::subset(x, x$LRRSYM %in% unlist(ind$usage_symbols))
+xexc <- terra::subset(xsub, xsub$MLRARSYM %in% unlist(ind$except_mlra))
 
-plot(x, ext = xsub)
-plot(xsub, add = TRUE, col = "BLUE")
-plot(xexc, add = TRUE, col = "RED")
+terra::plot(x, ext = xsub)
+terra::plot(xsub, add = TRUE, col = "BLUE")
+terra::plot(xexc, add = TRUE, col = "RED")
 ```
 
 <img src="man/figures/README-example1-spatial-1.png" width="100%" />
@@ -148,9 +147,6 @@ In future updates I hope to include:
 
 - \_ An index to figures and pictures from the guide, and mapping of
   figures to specific indicators
-
-- \_ Parsing of LRRs and MLRAs where established indicators are being
-  tested (new columns in existing dataset, or new dataset)
 
 - \_ Parsing of LRRs and MLRAs where provisional indicators are being
   tested (new dataset)

@@ -14,8 +14,10 @@ RoxygenNote: 7.3.1
 URL: https://github.com/brownag/hydricsoils/, https://humus.rocks/hydricsoils/
 BugReports: https://github.com/brownag/hydricsoils/issues/
 Imports: 
+    tools,
     utils
 Suggests: 
+    terra,
     knitr,
     rmarkdown
 VignetteBuilder: knitr

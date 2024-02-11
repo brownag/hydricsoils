@@ -5,7 +5,7 @@
 \alias{fihs}
 \title{Field Indicators of Hydric Soils in the United States}
 \format{
-An object of class \code{data.frame} with 44 rows and 9 columns.
+An object of class \code{data.frame} with 44 rows and 11 columns.
 }
 \usage{
 data(fihs)
