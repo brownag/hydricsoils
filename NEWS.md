@@ -1,4 +1,4 @@
-# Changes in version 0.1.0.9002
+# Changes in version 0.1.1
 
 ## Improvements
 
@@ -17,6 +17,8 @@
   * Added a vignette showing parsed data and graphics of indicator usage areas
   
   * Added basic unit tests
+  
+  * Added conversion functions: `indicator_to_name()`, `name_to_indicator()`, `indicator_to_usesym()`, `usesym_to_indicator()`, `lrr_to_mlra()`, `mlra_to_lrr()`, `lrr_to_lrrname()`, `lrrname_to_lrr()`, `mlra_to_mlraname()`, `mlraname_to_mlra()`, `lrrmlra_match()`, `fihs_match()`, `usesym_match()`
 
 # Changes in version 0.1.0
 

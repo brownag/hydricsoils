@@ -4,7 +4,7 @@
 #'
 #' @param x character. Vector LRR or MLRA symbols or names.
 #'
-#' @return character. Vector of LRR or MLRA symbols or names corresponding to `x`.
+#' @return character or list. Vector of LRR or MLRA symbols or names corresponding to `x`.
 #' @export
 #' @seealso [lrrmlra]
 #' @rdname lrrmlra-symbol-conversion
@@ -26,42 +26,50 @@
 #' lrrname_to_lrr("California Subtropical Fruit, Truck, and Specialty Crop Region")
 #'
 mlra_to_lrr <- function(x) {
-  # TODO: match to ensure output conforms with `x` order and NA-handling
-  .load_hydricsoils_datasets()
-  hydricsoils.env$lrrmlra[hydricsoils.env$lrrmlra$MLRARSYM %in% toupper(x), ]$LRRSYM
+  lrrmlra_match(x, "MLRARSYM")$LRRSYM
 }
 
 #' @export
 #' @rdname lrrmlra-symbol-conversion
 mlra_to_mlraname <- function(x) {
-  .load_hydricsoils_datasets()
-  hydricsoils.env$lrrmlra[hydricsoils.env$lrrmlra$MLRARSYM %in% toupper(x), ]$MLRA_NAME
+  lrrmlra_match(x, "MLRARSYM")$MLRA_NAME
 }
 
 #' @export
 #' @rdname lrrmlra-symbol-conversion
 mlraname_to_mlra <- function(x) {
-  .load_hydricsoils_datasets()
-  hydricsoils.env$lrrmlra[toupper(hydricsoils.env$lrrmlra$MLRA_NAME) %in% toupper(x), ]$MLRARSYM
+  lrrmlra_match(x, "MLRA_NAME")$MLRARSYM
 }
 
+#' @param simplify _logical_. If result is a _list_, and `x` is length `1`, return a character vector. Default: `TRUE`
 #' @export
 #' @rdname lrrmlra-symbol-conversion
-lrr_to_mlra <- function(x) {
-  .load_hydricsoils_datasets()
-  hydricsoils.env$lrrmlra[hydricsoils.env$lrrmlra$LRRSYM %in% toupper(x), ]$MLRARSYM
+lrr_to_mlra <- function(x, simplify = TRUE) {
+  if (!is.list(x))
+    x <- list(x)
+  res <- lapply(x, function(xx) hydricsoils.env$lrrmlra[toupper(hydricsoils.env$lrrmlra[["LRRSYM"]]) %in% toupper(xx), ]$MLRARSYM)
+  if (simplify && length(x) == 1) {
+    return(res[[1]])
+  }
+  res
 }
 
 #' @export
 #' @rdname lrrmlra-symbol-conversion
 lrr_to_lrrname <- function(x) {
-  .load_hydricsoils_datasets()
-  unique(hydricsoils.env$lrrmlra[hydricsoils.env$lrrmlra$LRRSYM %in% toupper(x), ]$LRR_NAME)
+  lrrmlra_match(x, "LRRSYM")$LRR_NAME
 }
 
 #' @export
 #' @rdname lrrmlra-symbol-conversion
 lrrname_to_lrr <- function(x) {
+  lrrmlra_match(x, "LRR_NAME")$LRRSYM
+}
+
+#' @param a character. Used only for `lrrmlra_match()`. Column name in `lrrmlra` to match `x` against.
+#' @export
+#' @rdname lrrmlra-symbol-conversion
+lrrmlra_match <- function(x, a) {
   .load_hydricsoils_datasets()
-  unique(hydricsoils.env$lrrmlra[toupper(hydricsoils.env$lrrmlra$LRR_NAME) %in% toupper(x), ]$LRRSYM)
+  hydricsoils.env$lrrmlra[match(toupper(x), toupper(hydricsoils.env$lrrmlra[[a]])), ]
 }

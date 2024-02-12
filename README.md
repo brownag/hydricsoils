@@ -34,7 +34,7 @@ indicator “A9” (also known as “1 cm Muck”).
 
 ``` r
 library(hydricsoils)
-#> hydricsoils v0.1.0.9002 -- using:
+#> hydricsoils v0.1.0.9003 -- using:
 #>  - 'Field Indicators of Hydric Soils in the United States' v8.2 (2018)
 #>  - 'Land Resource Regions and Major Land Resource Areas of the United States, the Caribbean, and the Pacific Basin' v5.2 (2022)
 
@@ -76,7 +76,7 @@ known as the “California Subtropical Fruit, Truck, and Specialty Crop
 Region”)
 
 ``` r
-subset(fihs, sapply(fihs$usage_symbols, \(x) any(x == "C")),
+subset(fihs, fihs$indicator %in% usesym_to_indicator("C"),
        select = c("indicator", "indicator_name"))
 #>    indicator              indicator_name
 #> 3         A1          Histosol or Histel
@@ -102,7 +102,7 @@ Compare to LRR “D” (also known as the “Western Range and Irrigated
 Region”)
 
 ``` r
-subset(fihs, sapply(fihs$usage_symbols, \(x) any(x == "D")), 
+subset(fihs, fihs$indicator %in% usesym_to_indicator("D"), 
        select = c("indicator", "indicator_name"))
 #>    indicator              indicator_name
 #> 3         A1          Histosol or Histel

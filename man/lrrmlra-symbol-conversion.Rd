@@ -7,6 +7,7 @@
 \alias{lrr_to_mlra}
 \alias{lrr_to_lrrname}
 \alias{lrrname_to_lrr}
+\alias{lrrmlra_match}
 \title{Convert between Land Resource Region (LRR) or Major Land Resource Area (MLRA) Symbols and Names}
 \usage{
 mlra_to_lrr(x)
@@ -15,17 +16,23 @@ mlra_to_mlraname(x)
 
 mlraname_to_mlra(x)
 
-lrr_to_mlra(x)
+lrr_to_mlra(x, simplify = TRUE)
 
 lrr_to_lrrname(x)
 
 lrrname_to_lrr(x)
+
+lrrmlra_match(x, a)
 }
 \arguments{
 \item{x}{character. Vector LRR or MLRA symbols or names.}
+
+\item{simplify}{\emph{logical}. If result is a \emph{list}, and \code{x} is length \code{1}, return a character vector. Default: \code{TRUE}}
+
+\item{a}{character. Used only for \code{lrrmlra_match()}. Column name in \code{lrrmlra} to match \code{x} against.}
 }
 \value{
-character. Vector of LRR or MLRA symbols or names corresponding to \code{x}.
+character or list. Vector of LRR or MLRA symbols or names corresponding to \code{x}.
 }
 \description{
 Helper functions for converting between symbols and names associated with Land Resource Regions (LRR) or Major Land Resource Areas (MLRA) using the internal dataset \code{lrrmlra}.
