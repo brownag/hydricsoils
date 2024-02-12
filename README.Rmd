@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 [![hydricsoils Manual](https://img.shields.io/badge/docs-HTML-informational)](https://humus.rocks/hydricsoils/)
 <!-- badges: end -->
 
-The goal of {hydricsoils} is to provide easy access to definitions, criteria, and area of applicability for 'Field Indicators of Hydric Soils in the United States' and also to provide tools which assist in evaluating associated soil morphology.
+The goal of {hydricsoils} is to provide easy access to definitions, criteria, and area of applicability for '[Field Indicators of Hydric Soils in the United States](https://humus.rocks/hydricsoils/fihs.html)' and also to provide tools which assist in evaluating associated soil morphology.
 
 ## Installation
 
@@ -50,7 +50,13 @@ If we load the MLRA v5.2 database using `lrrmlra_geometry()` (requires [{terra}]
 There is a function in the package called `plot_indicator_usage()` which simplifies the process of loading and subsetting the geometry. It provides some simple defaults for visualizing areas where usage is "Approved", "Excluded" or in "Testing".
 
 ```{r example1-spatial}
-plot_indicator_usage("A9", test_areas = TRUE, ext = c("Approved", "Excluded"), plg = list(x = "bottomleft"))
+plot_indicator_usage(
+  "A9",
+  test_areas = TRUE,
+  ext = c("Approved", "Excluded"),
+  crs = "EPSG:5070",
+  plg = list(x = "bottomleft")
+)
 ```
 
 ### Example 2
@@ -76,13 +82,23 @@ The main difference between LRRs "C" and "D" is that indicator "A5" is approved 
 
 We can visualize this by expanding the first example to include "A5" in a separate pane. We limit the extent to just LRRs "C" and "D".
 
-```{r example2-spatial}
+```{r example2-spatial, fig.height=12}
 x <- lrrmlra_geometry()
 xext <- subset(x, x$LRRSYM %in% c("C", "D"))
 
 par(mfrow = c(2, 1))
-plot_indicator_usage("A5", test_areas = TRUE, ext = xext)
-plot_indicator_usage("A9", test_areas = TRUE, ext = xext)
+plot_indicator_usage(
+  "A5",
+  test_areas = TRUE,
+  ext = xext,
+  plg = list(x = "bottomleft")
+)
+plot_indicator_usage(
+  "A9",
+  test_areas = TRUE,
+  ext = xext,
+  plg = list(x = "bottomleft")
+)
 ```
 
 ## Future work
