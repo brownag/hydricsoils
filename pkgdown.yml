@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   fihs: fihs.html
-last_built: 2024-02-12T04:46Z
+last_built: 2024-02-12T14:31Z
 urls:
   reference: http://humus.rocks/hydricsoils/reference
   article: http://humus.rocks/hydricsoils/articles
