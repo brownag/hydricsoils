@@ -3,7 +3,7 @@
 \docType{data}
 \name{fihs}
 \alias{fihs}
-\title{Field Indicators of Hydric Soils in the United States}
+\title{DATA: 'Field Indicators of Hydric Soils in the United States'}
 \format{
 An object of class \code{data.frame} with 44 rows and 11 columns.
 }
@@ -11,7 +11,7 @@ An object of class \code{data.frame} with 44 rows and 11 columns.
 data(fihs)
 }
 \description{
-This data set is derived from the latest edition of the 'Field Indicators of Hydric Soils in the United States' (Version 8.2, 2018)
+This dataset is derived from the latest edition of the \href{https://www.nrcs.usda.gov/sites/default/files/2022-09/Field_Indicators_of_Hydric_Soils.pdf}{'Field Indicators of Hydric Soils in the United States' (Version 8.2, 2018)}
 }
 \references{
 United States Department of Agriculture, Natural Resources Conservation Service. 2018. Field Indicators of Hydric Soils in the United States, Version 8.2. L.M. Vasilas, G.W. Hurt, and J.F. Berkowitz (eds.). USDA, NRCS, in cooperation with the National Technical Committee for Hydric Soils. Available online: \url{https://www.nrcs.usda.gov/resources/guides-and-instructions/field-indicators-of-hydric-soils}

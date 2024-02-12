@@ -26,15 +26,22 @@ if (show_plots) {
 }
 ```
 
-This vignette shows the usage, criteria, and notes related to the application of Field Indicators of Hydric Soils in the United States.
+This vignette shows the usage, criteria, and notes related to the application of [Field Indicators of Hydric Soils in the United States](https://www.nrcs.usda.gov/resources/guides-and-instructions/field-indicators-of-hydric-soils).
 
 Usage ("**Used in:**" section) and testing ("**Test in:**" section) of hydric indicators are generally based on Land Resource Region (denoted by a code with a single letter, or a single letter followed by a single digit). In some cases indicators are used only in specific MLRAs (denoted by a code starting with one or more digits, possibly ending with a single letter) of a region. In other cases, an indicator is used in all parts of a Land Resource Region except for specific MLRAs ("**Except MLRA:**" section)
 
 Extent maps for indicators that are _not_ specific to Alaska are limited to CONUS (using coordinate reference system `"EPSG:5070"`) for clarity. Alaskan indicators are limited to the Alaskan Land Resource Regions (using `"EPSG:3338"`). See `plot_indicator_usage()` to create maps using the full extent (i.e. for details on applicability in Pacific Islands or the Caribbean).
 
 ```{r fihs1, echo=FALSE, results='asis', fig.width=8, fig.height=4, fig.align='center', out.width="100%"}
+s <- which(diff(c(0, as.integer(factor(substr(fihs$indicator, 0, 1))))) != 0)
 for (i in seq(nrow(fihs))) {
   f <- fihs[i, ]
+  
+  if (i %in% s) {
+    cat("\n\n")
+    cat("#", f$section, "\n\n")
+  }
+  
   cat("##", f$indicator, " -- ", f$indicator_name, "\n\n")
   
   cat(f$usage, "\n\n")
@@ -79,3 +86,9 @@ for (i in seq(nrow(fihs))) {
   
 }
 ```
+
+## References
+
+United States Department of Agriculture, Natural Resources Conservation Service. 2018. Field Indicators of Hydric Soils in the United States, Version 8.2. L.M. Vasilas, G.W. Hurt, and J.F. Berkowitz (eds.). USDA, NRCS, in cooperation with the National Technical Committee for Hydric Soils. Available online: <https://www.nrcs.usda.gov/resources/guides-and-instructions/field-indicators-of-hydric-soils>
+
+United States Department of Agriculture, Natural Resources Conservation Service. 2022. Land resource regions and major land resource areas of the United States, the Caribbean, and the Pacific Basin. U.S. Department of Agriculture, Agriculture Handbook 296. Available online: <https://www.nrcs.usda.gov/resources/data-and-reports/major-land-resource-area-mlra>
