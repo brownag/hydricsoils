@@ -1,7 +1,7 @@
 Package: hydricsoils
 Type: Package
 Title: Tools for 'Field Indicators of Hydric Soils in the United States' 
-Version: 0.1.0.9002
+Version: 0.1.1
 Author: Andrew G. Brown
 Maintainer: Andrew G. Brown <brown.andrewg@gmail.com>
 Description: The goal of 'hydricsoils' is to provide easy access to definitions, criteria, and area of applicability for 'Field Indicators of Hydric Soils in the United States' and also to provide tools which assist in evaluating associated soil morphology.
@@ -16,6 +16,7 @@ BugReports: https://github.com/brownag/hydricsoils/issues/
 Imports: 
     tools,
     utils,
+    stats,
     grDevices
 Suggests: 
     terra,

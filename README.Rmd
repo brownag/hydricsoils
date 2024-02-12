@@ -64,14 +64,14 @@ plot_indicator_usage(
 Next let's find all of the indicators that can be used in LRR "C" (also known as the "California Subtropical Fruit, Truck, and Specialty Crop Region")
 
 ```{r example2-LRRC}
-subset(fihs, sapply(fihs$usage_symbols, \(x) any(x == "C")),
+subset(fihs, fihs$indicator %in% usesym_to_indicator("C"),
        select = c("indicator", "indicator_name"))
 ```
 
 Compare to LRR "D" (also known as the "Western Range and Irrigated Region")
 
 ```{r example2-LRRD}
-subset(fihs, sapply(fihs$usage_symbols, \(x) any(x == "D")), 
+subset(fihs, fihs$indicator %in% usesym_to_indicator("D"), 
        select = c("indicator", "indicator_name"))
 ```
 
