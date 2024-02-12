@@ -12,9 +12,9 @@ Manual](https://img.shields.io/badge/docs-HTML-informational)](https://humus.roc
 
 The goal of {hydricsoils} is to provide easy access to definitions,
 criteria, and area of applicability for ‘[Field Indicators of Hydric
-Soils in the United States](https://humus.rocks/hydricsoils/fihs.html)’
-and also to provide tools which assist in evaluating associated soil
-morphology.
+Soils in the United
+States](https://humus.rocks/hydricsoils/articles/fihs.html)’ and also to
+provide tools which assist in evaluating associated soil morphology.
 
 ## Installation
 
@@ -34,7 +34,7 @@ indicator “A9” (also known as “1 cm Muck”).
 
 ``` r
 library(hydricsoils)
-#> hydricsoils v0.1.0.9003 -- using:
+#> hydricsoils v0.1.1 -- using:
 #>  - 'Field Indicators of Hydric Soils in the United States' v8.2 (2018)
 #>  - 'Land Resource Regions and Major Land Resource Areas of the United States, the Caribbean, and the Pacific Basin' v5.2 (2022)
 
