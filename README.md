@@ -11,9 +11,10 @@ Manual](https://img.shields.io/badge/docs-HTML-informational)](https://humus.roc
 <!-- badges: end -->
 
 The goal of {hydricsoils} is to provide easy access to definitions,
-criteria, and area of applicability for ‘Field Indicators of Hydric
-Soils in the United States’ and also to provide tools which assist in
-evaluating associated soil morphology.
+criteria, and area of applicability for ‘[Field Indicators of Hydric
+Soils in the United States](https://humus.rocks/hydricsoils/fihs.html)’
+and also to provide tools which assist in evaluating associated soil
+morphology.
 
 ## Installation
 
@@ -56,7 +57,13 @@ provides some simple defaults for visualizing areas where usage is
 “Approved”, “Excluded” or in “Testing”.
 
 ``` r
-plot_indicator_usage("A9", test_areas = TRUE, ext = c("Approved", "Excluded"), plg = list(x = "bottomleft"))
+plot_indicator_usage(
+  "A9",
+  test_areas = TRUE,
+  ext = c("Approved", "Excluded"),
+  crs = "EPSG:5070",
+  plg = list(x = "bottomleft")
+)
 #> Loading required namespace: terra
 ```
 
@@ -135,8 +142,18 @@ x <- lrrmlra_geometry()
 xext <- subset(x, x$LRRSYM %in% c("C", "D"))
 
 par(mfrow = c(2, 1))
-plot_indicator_usage("A5", test_areas = TRUE, ext = xext)
-plot_indicator_usage("A9", test_areas = TRUE, ext = xext)
+plot_indicator_usage(
+  "A5",
+  test_areas = TRUE,
+  ext = xext,
+  plg = list(x = "bottomleft")
+)
+plot_indicator_usage(
+  "A9",
+  test_areas = TRUE,
+  ext = xext,
+  plg = list(x = "bottomleft")
+)
 ```
 
 <img src="man/figures/README-example2-spatial-1.png" width="100%" />

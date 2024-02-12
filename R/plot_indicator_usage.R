@@ -104,7 +104,7 @@ plot_indicator_usage <- function(indicator,
         ext = xext,
         add = TRUE,
         main = paste0(ind$indicator, " -- ", ind$indicator_name),
-        col = legcol[match(unique(xcmb$.internalUsageCategory), leglab)],
+        col = legcol[match(unique(terra::crop(xcmb, terra::ext(xext))$.internalUsageCategory), leglab)],
         plg = plg
       )
     }
