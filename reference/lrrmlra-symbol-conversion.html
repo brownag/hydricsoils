@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">hydricsoils</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,11 +63,13 @@
 <span></span>
 <span><span class="fu">mlraname_to_mlra</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">lrr_to_mlra</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu">lrr_to_mlra</span><span class="op">(</span><span class="va">x</span>, simplify <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">lrr_to_lrrname</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">lrrname_to_lrr</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">lrrname_to_lrr</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">lrrmlra_match</span><span class="op">(</span><span class="va">x</span>, <span class="va">a</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -75,12 +77,20 @@
     <dl><dt>x</dt>
 <dd><p>character. Vector LRR or MLRA symbols or names.</p></dd>
 
+
+<dt>simplify</dt>
+<dd><p><em>logical</em>. If result is a <em>list</em>, and <code>x</code> is length <code>1</code>, return a character vector. Default: <code>TRUE</code></p></dd>
+
+
+<dt>a</dt>
+<dd><p>character. Used only for <code>lrrmlra_match()</code>. Column name in <code>lrrmlra</code> to match <code>x</code> against.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>character. Vector of LRR or MLRA symbols or names corresponding to <code>x</code>.</p>
+<p>character or list. Vector of LRR or MLRA symbols or names corresponding to <code>x</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
