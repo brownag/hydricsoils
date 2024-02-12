@@ -3,7 +3,7 @@
 \docType{data}
 \name{lrrmlra}
 \alias{lrrmlra}
-\title{Land Resource Regions and Major Land Resource Areas of the United States, the Caribbean, and the Pacific Basin}
+\title{DATA: 'Land Resource Regions and Major Land Resource Areas of the United States, the Caribbean, and the Pacific Basin'}
 \format{
 An object of class \code{data.frame} with 267 rows and 5 columns.
 }
@@ -11,7 +11,7 @@ An object of class \code{data.frame} with 267 rows and 5 columns.
 data(lrrmlra)
 }
 \description{
-This data set is derived from the latest edition of the 'MLRA Geographic Database' (Version 5.2, 2022)
+This dataset is derived from the latest edition of the \href{https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip}{'MLRA Geographic Database' (Version 5.2, 2022)}
 }
 \references{
 United States Department of Agriculture, Natural Resources Conservation Service. 2022. Land resource regions and major land resource areas of the United States, the Caribbean, and the Pacific Basin. U.S. Department of Agriculture, Agriculture Handbook 296. Available online: \url{https://www.nrcs.usda.gov/resources/data-and-reports/major-land-resource-area-mlra}

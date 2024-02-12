@@ -76,7 +76,8 @@ known as the “California Subtropical Fruit, Truck, and Specialty Crop
 Region”)
 
 ``` r
-subset(fihs, sapply(fihs$usage_symbols, \(x) any(x == "C")), select = c("indicator", "indicator_name"))
+subset(fihs, sapply(fihs$usage_symbols, \(x) any(x == "C")),
+       select = c("indicator", "indicator_name"))
 #>    indicator              indicator_name
 #> 3         A1          Histosol or Histel
 #> 4         A2             Histic Epipedon
