@@ -54,9 +54,8 @@ plot_indicator_usage <- function(indicator,
     exc <- c(exc, unlist(ind$test_except_mlra))
   }
 
-  xtst <- terra::subset(x, (x$LRRSYM %in% tst | x$MLRARSYM %in% tst) & !x$MLRARSYM %in% exc)
-
-  # TODO: are/will whole LRRs ever be excepted?
+  xtst <- terra::subset(x, (x$LRRSYM %in% tst | x$MLRARSYM %in% tst) &
+                            !x$MLRARSYM %in% exc & !x$MLRARSYM %in% use)
   xexc <- terra::subset(x, x$MLRARSYM %in% exc | x$LRRSYM %in% exc)
 
   # create combined SpatVector with symbology column
@@ -66,7 +65,7 @@ plot_indicator_usage <- function(indicator,
 
   if (test_areas) {
     xtst$.internalUsageCategory <- "Testing"
-    xcmb <- rbind(xcmb, xtst)
+    xcmb <- rbind(xcmb[!xcmb$MLRARSYM %in% xtst$MLRARSYM], xtst)
   }
 
   if (is.null(ext)) {
