@@ -1,283 +1,54 @@
-Figure 1. The soil on the right is hydric. It meets the requirements of indicator S7 (Dark Surface). From the surface and to a depth
-of 10 cm, value is 3 or less and chroma is 1 or less. Below 10 cm, the matrix has chroma of 2 or less.The soil on the left is
-not hydric. It does not have a dark surface layer thick enough to meet the requirements of indicator S7 and does not meet the
-requirements of any other indicator.
-—
-Figure 2. The soil profile above consists of an 8 cm (3.14
-inches) layer of peat and/or mucky peat underlain by
-a 1 cm (0.4 inches) layer of muck.The remaining soil
-layers are sandy soil material. In LRRs R, W, X, and
-Y, observations would begin below the peat, mucky
-peat, and muck layers (9 cm). In LRRs, F, G, H, and M,
-observations would start at the actual soil surface. In all
-remaining LRRs, observations would begin at the muck
-surface (8 cm).
-—
-Figure 3. The left portion of this ped shows moist soil colors,
-and the right portion shows dry soil colors. Moist colors
-are to be used when hydric soils are identified. The moist
-colors in this picture would meet the requirements for
-indicator F6 (Redox Dark Surface), but the dry colors
-would not meet these requirements.
-—
-Figure 4. The lower portion of this soil profile meets the
-color and depth requirements of indicator F3 (Depleted
-Matrix); however, the upper portion of the profile contains
-a layer with chroma of 2 or more that is more than 15 cm
-(6 inches) thick. As a result, indicator F3 (Depleted Matrix)
-is not met.
-—
-Figure 5. Proper installation and monitoring of equipment
-as described in the Hydric Soil Technical Standard is
-required to collect data regarding proposed additions,
-deletions, or other changes to the hydric soil indicators.
-—
-Figure 7. Indicator A1 (Histosol or Histel).This soil has more
-than 40 cm (16 inches) of organic material, starting at the
-soil surface
-—
-Figure 8. Indicators A2 (Histic Epipedon) and A3 (Black
-Histic).This soil meets the depth criterion of A2 and
-the color and depth criteria of A3.The black color, a
-requirement of A3, results from the accumulation of
-organic matter when the soil is saturated and anaerobic.
-—
+Figure 1. The soil on the right is hydric. It meets the requirements of indicator S7 (Dark Surface). From the surface and to a depth of 10 cm, value is 3 or less and chroma is 1 or less. Below 10 cm, the matrix has chroma of 2 or less.The soil on the left is not hydric. It does not have a dark surface layer thick enough to meet the requirements of indicator S7 and does not meet the requirements of any other indicator.
+Figure 2. The soil profile above consists of an 8 cm (3.14 inches) layer of peat and/or mucky peat underlain by a 1 cm (0.4 inches) layer of muck.The remaining soil layers are sandy soil material. In LRRs R, W, X, and Y, observations would begin below the peat, mucky peat, and muck layers (9 cm). In LRRs, F, G, H, and M, observations would start at the actual soil surface. In all remaining LRRs, observations would begin at the muck surface (8 cm).
+Figure 3. The left portion of this ped shows moist soil colors, and the right portion shows dry soil colors. Moist colors are to be used when hydric soils are identified. The moist colors in this picture would meet the requirements for indicator F6 (Redox Dark Surface), but the dry colors would not meet these requirements.
+Figure 4. The lower portion of this soil profile meets the color and depth requirements of indicator F3 (Depleted Matrix); however, the upper portion of the profile contains a layer with chroma of 2 or more that is more than 15 cm (6 inches) thick. As a result, indicator F3 (Depleted Matrix) is not met.
+Figure 5. Proper installation and monitoring of equipment as described in the Hydric Soil Technical Standard is required to collect data regarding proposed additions, deletions, or other changes to the hydric soil indicators.
+Figure 7. Indicator A1 (Histosol or Histel).This soil has more than 40 cm (16 inches) of organic material, starting at the soil surface
+Figure 8. Indicators A2 (Histic Epipedon) and A3 (Black Histic).This soil meets the depth criterion of A2 and the color and depth criteria of A3.The black color, a requirement of A3, results from the accumulation of organic matter when the soil is saturated and anaerobic.
 Figure 9. Indicator A4 (Hydrogen Sulfide) is most likely to occur in salt marshes and other very wet ecosystems.
-—
-Figure 10. Indicator A5 (Stratified Layers) in sandy material.
-This soil also meets the requirements of indicator A6
-(Organic Bodies).
-—
-Figure 11. Indicator A6 (Organic Bodies). An individual
-organic body generally is about 1 to 3 cm in size.
-—
-Figure 12. Indicator A6 (Organic Bodies). Some organic
-bodies are smaller than 1 cm.
-—
-Figure 13. Indicator A7 (5 cm Mucky Mineral). This soil has
-more than 5 cm of mucky sand, starting at the surface.
-—
-Figure 14. Indicator A9 (1 cm Muck). This soil has more than
-1 cm of muck, starting at 8 cm on the left measuring
-tape. Different LRRs may use the presence of muck or 2
-cm of muck as an indicator of a hydric soil.
-—
-Figure 15. Indicator A11 (Depleted Below Dark Surface).
-This soil has a thin dark surface horizon that meets the
-requirements of indicator A11. Because a depleted matrix
-below the surface horizon starts at a depth of ≤15 cm from
-the soil surface and is at least 5 cm thick, the soil also
-meets the requirements of indicator F3 (Depleted Matrix).
-—
-Figure 16. Indicator A11 (Depleted Below Dark Surface).
-This soil has a thick dark surface horizon that meets the
-requirements of indicator A11. Unlike the matrix in figure
-15, the depleted matrix below the dark surface horizon
-in this soil starts at a depth of about 29 cm, which is too
-deep to meet the requirements of indicator F3 (Depleted
-Matrix). Indicator A11 allows a deeper depleted matrix
-than indicator F3.
-—
-Figure 17. Indicator A12 (Thick Dark Surface). Deep
-observation is needed to determine whether a soil meets
-the requirements of this indicator. In this soil, depth to the
-depleted matrix is about 55 cm.
-—
-Figure 18. Indicator A13 (Alaska Gleyed). The bluish band at
-a depth of about 20 cm indicates the presence of reduced
-soil material.The material below 20 cm reflects both the
-color of the parent material and soil weathering under
-aerobic conditions.
-—
-Figure 19. Indicator A14 (Alaska Redox). The matrix color
-meets the requirements of a gleyed matrix. Reddish
-orange redox concentrations occur along the pores and
-channels of living roots.
-—
-Figure 20. Indicator A15 (Alaska Gleyed Pores). Gleyed colors
-are along root channels. Reduction occurs first along root
-channels, where organic carbon is concentrated.
-—
-Figure 21. Indicator S4 (Sandy Gleyed Matrix).The gleyed
-matrix begins at the surface of the soil.
-—
-Figure 22. Indicator S5 (Sandy Redox).This soil meets the
-requirements of indicator S5, having a matrix chroma
-of 2 or less and at least 2 percent redox concentrations
-starting at a depth of about 10 cm.
-—
-Figure 23. Indicator S5 (Sandy Redox). A close-up of the layer
-in figure 22 that has chroma of 2 or less and at least 2
-percent redox concentrations.
-—
-Figure 24. Indicator S6 (Stripped Matrix).This indicator
-requires diffuse splotchy patterns with rounded areas
-stripped of organic matter or iron, as exemplified in this
-photo.
-—
-Figure 25. Indicator S7 (Dark Surface). This soil has value of
-3 or less and chroma of 1 or less from the surface to a
-depth of 10 cm. Directly below 10 cm, it is the same color,
-meeting the requirement of having chroma of 2 or less.
-—
-Figure 26. Indicator S8 (Polyvalue Below Surface). The diffuse
-splotchy pattern of black (value of 3 or less and chroma of
-1 or less) and gray (value of 4 or more and chroma of 1 or
-less) below a black surface horizon is evidence of organic
-matter that has been mobilized and translocated.This
-soil also meets the requirements of indicator S5 (Sandy
-Redox).
-—
-Figure 27. Indicator S9 (Thin Dark Surface). A dark surface
-horizon about 5 cm thick overlies a thin layer with value
-of 4 or less and chroma of 1 or less. Directly below the
-second layer is a spodic horizon, starting at a depth of
-about 7 cm.
-—
-Figure 28. Indicator F2 (Loamy Gleyed Matrix). The gleyed
-matrix begins at the surface and extends to a depth of
-about 14 cm.
-—
-Figure 29. Indicator F3 (Depleted Matrix).This soil has
-value of 4 or more and chroma of 2 or less and redox
-concentrations starting at a depth of 8 cm. Since the
-depleted matrix starts at a depth of ≤15 cm from the soil
-surface, the minimum thickness requirement is only 5 cm.
-—
-Figure 30. Indicator F6 (Redox Dark Surface). A soil that
-meets the requirements of indicator F6 must have a dark
-surface layer with value of 3 or less and chroma of 2 or
-less and redox concentrations in the dark layer.
-—
-Figure 31. Indicators F6 (Redox Dark Surface) and
-F7 (Depleted Dark Surface). A soil that meets the
-requirements of indicator F7 commonly also meets the
-requirements of indicator F6. If the dark surface layer
-has depletions, it most likely also has concentrations.
-—
-Figure 32. Indicators F6 (Redox Dark Surface) and F7
-(Depleted Dark Surface). An example of both depletions
-and concentrations in a dark matrix.
-—
-Figure 33. Indicator F8 (Redox Depressions). Indicator F8
-requires only 5 percent redox concentrations in the upper
-part of the soil.The matrix does not have chroma of 2 or
-less.
-—
-Figure 34. Indicator F8 (Redox Depressions). Indicator F8
-requires that the soil be in a closed depression subject to
-ponding.This soil is in a backwater depression on a flood
-plain.
-—
-Figure 35. Indicator F10 (Marl). In this profile, marl begins at a
-depth ≤10 cm of the soil surface.The scale is in cm.
-Figure 36. Indicator F12 (Iron-Manganese Masses). Although
-this indicator requires only 40 percent value of chroma
-of 2 or less, at least 2 percent iron-manganese masses is
-needed.These masses are indicated by black splotches in
-this photo.
-—
-Figure 37. Indicator F13 (Umbric Surface).This soil has
-an umbric surface horizon about 44 cm thick. It meets
-the requirements not only of indicator F13 but also of
-indicators A7 (5 cm Mucky Mineral) and A12 (Thick Dark
-Surface).
-—
-Figure 38. Indicator F19 (Piedmont Flood Plain Soils).This
-indicator is restricted to active flood plains. It does not
-require a matrix color with chroma of 2 or less.
-Figure 39. Indicator F20 (Anomalous Bright Loamy Soils).
-This indicator is restricted to areas near estuarine
-marshes or water. It does not require a matrix color with
-chroma of 2 or less.
-—
-Figure 40. Indicator F21 (Red Parent Material).This indicator
-should be used only in areas of red parent material that
-is resistant to reduction. Not all red soils formed in red
-parent material.
-—
-Figure 41. Indicator F3 (Depleted Matrix) in red parent
-material. If a soil that formed in red parent material stays
-wet and anaerobic long enough, it may develop the
-indicator F3.
-—
-Figure 42. Artificial drainage does not alter the hydric status
-of a soil.
-—
-Figure 43. The profile on the right is from a drained wetland
-adjacent to a ditch.The profile on the left is from an
-area not affected by the ditch. Both soils meet the
-requirements for indicators F3 (Depleted Matrix) and A11
-(Depleted Below Dark Surface) and thus are hydric soils.
-—
-Figure 44. Illustration of values and chromas that
-require 2 percent or more distinct or prominent redox
-concentrations and those that do not, for hue 10YR, to
-meet the definition of a depleted matrix. Due to inaccurate
-color reproduction, do not use this page to determine soil
-colors in the field. Background image from the Munsell
-Soil Color Charts reprinted courtesy of Munsell Color
-Services Lab, a part of X-Rite, Inc. (Xrite 2009).
-—
-Figure 45. A depleted matrix with value of 4 or more and
-chroma of 2 or less. Redox concentrations occur as soft
-masses and pore linings.
-—
-Figure 46. Iron concentration with a diffuse boundary
-exhibited by bright colors in the center of the
-concentration and a lighter color away from the center.
-—
-Figure 47. A soil profile with an albic (white) E horizon
-between depths of about 35 and 60 cm.The white color
-results from loss of iron through weathering.
-—
-Figure 48. Relationships among the hues of the Munsell
-Color System. Solid lines represent hues contained in the
-Munsell Soil Color Charts (2009). Dotted lines represent
-all other possible 2.5-unit steps. Moving from one hue line
-to the adjacent hue line represents a delta hue of 1 (2.5
-units). Moving from hue N to any other hue the delta hue
-is 1. Adapted from the Soil Survey Manual (Soil Survey
-Staff, 1993).
-—
-Figure 49. Glauconitic soils typically have gleyed, green,
-or black matrices and can have mottles of weathered
-sulfides that can be mistaken for redox concentrations.
-If the weathered sulfides in this glauconitic soil were
-mistaken for redox concentrations, this nonhydric soil
-would appear to meet the requirements of indicator F6
-(Redox Dark Surface).
-—
-Figure 50. A gleyed matrix must have the colors on one of
-the two pages showing gleyed colors in the Munsell
-Soil Color Book. Values are 4 or more (above the red
-line).
-—
-Figure 51. The gleyed matrix in this soil starts at a depth of
-about 15 cm.The matrix color has value of 4 or more and
-is shown on one of the pages showing gleyed colors in
-the Munsell Soil Color Book.
-—
-Figure 52. A soil with a mollic epipedon, which is a thick,
-black surface horizon that has high base saturation. Soils
-that have a mollic epipedon are classified as Mollisols.
-—
-Figure 53. Percent organic carbon required for organic
-soil material, mucky modified mineral soil material, and
-mineral soil material as it is related to content of clay.
-—
+Figure 10. Indicator A5 (Stratified Layers) in sandy material. This soil also meets the requirements of indicator A6 (Organic Bodies).
+Figure 11. Indicator A6 (Organic Bodies). An individual organic body generally is about 1 to 3 cm in size.
+Figure 12. Indicator A6 (Organic Bodies). Some organic bodies are smaller than 1 cm.
+Figure 13. Indicator A7 (5 cm Mucky Mineral). This soil has more than 5 cm of mucky sand, starting at the surface.
+Figure 14. Indicator A9 (1 cm Muck). This soil has more than 1 cm of muck, starting at 8 cm on the left measuring tape. Different LRRs may use the presence of muck or 2 cm of muck as an indicator of a hydric soil.
+Figure 15. Indicator A11 (Depleted Below Dark Surface). This soil has a thin dark surface horizon that meets the requirements of indicator A11. Because a depleted matrix below the surface horizon starts at a depth of ≤15 cm from the soil surface and is at least 5 cm thick, the soil also meets the requirements of indicator F3 (Depleted Matrix).
+Figure 16. Indicator A11 (Depleted Below Dark Surface). This soil has a thick dark surface horizon that meets the requirements of indicator A11. Unlike the matrix in figure 15, the depleted matrix below the dark surface horizon in this soil starts at a depth of about 29 cm, which is too deep to meet the requirements of indicator F3 (Depleted Matrix). Indicator A11 allows a deeper depleted matrix than indicator F3.
+Figure 17. Indicator A12 (Thick Dark Surface). Deep observation is needed to determine whether a soil meets the requirements of this indicator. In this soil, depth to the depleted matrix is about 55 cm.
+Figure 18. Indicator A13 (Alaska Gleyed). The bluish band at a depth of about 20 cm indicates the presence of reduced soil material.The material below 20 cm reflects both the color of the parent material and soil weathering under aerobic conditions.
+Figure 19. Indicator A14 (Alaska Redox). The matrix color meets the requirements of a gleyed matrix. Reddish orange redox concentrations occur along the pores and channels of living roots.
+Figure 20. Indicator A15 (Alaska Gleyed Pores). Gleyed colors are along root channels. Reduction occurs first along root channels, where organic carbon is concentrated.
+Figure 21. Indicator S4 (Sandy Gleyed Matrix).The gleyed matrix begins at the surface of the soil.
+Figure 22. Indicator S5 (Sandy Redox).This soil meets the requirements of indicator S5, having a matrix chroma of 2 or less and at least 2 percent redox concentrations starting at a depth of about 10 cm.
+Figure 23. Indicator S5 (Sandy Redox). A close-up of the layer in figure 22 that has chroma of 2 or less and at least 2 percent redox concentrations.
+Figure 24. Indicator S6 (Stripped Matrix).This indicator requires diffuse splotchy patterns with rounded areas stripped of organic matter or iron, as exemplified in this photo.
+Figure 25. Indicator S7 (Dark Surface). This soil has value of 3 or less and chroma of 1 or less from the surface to a depth of 10 cm. Directly below 10 cm, it is the same color, meeting the requirement of having chroma of 2 or less.
+Figure 26. Indicator S8 (Polyvalue Below Surface). The diffuse splotchy pattern of black (value of 3 or less and chroma of 1 or less) and gray (value of 4 or more and chroma of 1 or less) below a black surface horizon is evidence of organic matter that has been mobilized and translocated.This soil also meets the requirements of indicator S5 (Sandy Redox).
+Figure 27. Indicator S9 (Thin Dark Surface). A dark surface horizon about 5 cm thick overlies a thin layer with value of 4 or less and chroma of 1 or less. Directly below the second layer is a spodic horizon, starting at a depth of about 7 cm.
+Figure 28. Indicator F2 (Loamy Gleyed Matrix). The gleyed matrix begins at the surface and extends to a depth of about 14 cm.
+Figure 29. Indicator F3 (Depleted Matrix).This soil has value of 4 or more and chroma of 2 or less and redox concentrations starting at a depth of 8 cm. Since the depleted matrix starts at a depth of ≤15 cm from the soil surface, the minimum thickness requirement is only 5 cm.
+Figure 30. Indicator F6 (Redox Dark Surface). A soil that meets the requirements of indicator F6 must have a dark surface layer with value of 3 or less and chroma of 2 or less and redox concentrations in the dark layer.
+Figure 31. Indicators F6 (Redox Dark Surface) and F7 (Depleted Dark Surface). A soil that meets the requirements of indicator F7 commonly also meets the requirements of indicator F6. If the dark surface layer has depletions, it most likely also has concentrations.
+Figure 32. Indicators F6 (Redox Dark Surface) and F7 (Depleted Dark Surface). An example of both depletions and concentrations in a dark matrix.
+Figure 33. Indicator F8 (Redox Depressions). Indicator F8 requires only 5 percent redox concentrations in the upper part of the soil.The matrix does not have chroma of 2 or less.
+Figure 34. Indicator F8 (Redox Depressions). Indicator F8 requires that the soil be in a closed depression subject to ponding.This soil is in a backwater depression on a flood plain.
+Figure 35. Indicator F10 (Marl). In this profile, marl begins at a depth ≤10 cm of the soil surface.The scale is in cm. Figure 36. Indicator F12 (Iron-Manganese Masses). Although this indicator requires only 40 percent value of chroma of 2 or less, at least 2 percent iron-manganese masses is needed.These masses are indicated by black splotches in this photo.
+Figure 37. Indicator F13 (Umbric Surface).This soil has an umbric surface horizon about 44 cm thick. It meets the requirements not only of indicator F13 but also of indicators A7 (5 cm Mucky Mineral) and A12 (Thick Dark Surface).
+Figure 38. Indicator F19 (Piedmont Flood Plain Soils).This indicator is restricted to active flood plains. It does not require a matrix color with chroma of 2 or less. Figure 39. Indicator F20 (Anomalous Bright Loamy Soils). This indicator is restricted to areas near estuarine marshes or water. It does not require a matrix color with chroma of 2 or less.
+Figure 40. Indicator F21 (Red Parent Material).This indicator should be used only in areas of red parent material that is resistant to reduction. Not all red soils formed in red parent material.
+Figure 41. Indicator F3 (Depleted Matrix) in red parent material. If a soil that formed in red parent material stays wet and anaerobic long enough, it may develop the indicator F3.
+Figure 42. Artificial drainage does not alter the hydric status of a soil.
+Figure 43. The profile on the right is from a drained wetland adjacent to a ditch.The profile on the left is from an area not affected by the ditch. Both soils meet the requirements for indicators F3 (Depleted Matrix) and A11 (Depleted Below Dark Surface) and thus are hydric soils.
+Figure 44. Illustration of values and chromas that require 2 percent or more distinct or prominent redox concentrations and those that do not, for hue 10YR, to meet the definition of a depleted matrix. Due to inaccurate color reproduction, do not use this page to determine soil colors in the field. Background image from the Munsell Soil Color Charts reprinted courtesy of Munsell Color Services Lab, a part of X-Rite, Inc. (Xrite 2009).
+Figure 45. A depleted matrix with value of 4 or more and chroma of 2 or less. Redox concentrations occur as soft masses and pore linings.
+Figure 46. Iron concentration with a diffuse boundary exhibited by bright colors in the center of the concentration and a lighter color away from the center.
+Figure 47. A soil profile with an albic (white) E horizon between depths of about 35 and 60 cm.The white color results from loss of iron through weathering.
+Figure 48. Relationships among the hues of the Munsell Color System. Solid lines represent hues contained in the Munsell Soil Color Charts (2009). Dotted lines represent all other possible 2.5-unit steps. Moving from one hue line to the adjacent hue line represents a delta hue of 1 (2.5 units). Moving from hue N to any other hue the delta hue is 1. Adapted from the Soil Survey Manual (Soil Survey Staff, 1993).
+Figure 49. Glauconitic soils typically have gleyed, green, or black matrices and can have mottles of weathered sulfides that can be mistaken for redox concentrations. If the weathered sulfides in this glauconitic soil were mistaken for redox concentrations, this nonhydric soil would appear to meet the requirements of indicator F6 (Redox Dark Surface).
+Figure 50. A gleyed matrix must have the colors on one of the two pages showing gleyed colors in the Munsell Soil Color Book. Values are 4 or more (above the red line).
+Figure 51. The gleyed matrix in this soil starts at a depth of about 15 cm.The matrix color has value of 4 or more and is shown on one of the pages showing gleyed colors in the Munsell Soil Color Book.
+Figure 52. A soil with a mollic epipedon, which is a thick, black surface horizon that has high base saturation. Soils that have a mollic epipedon are classified as Mollisols.
+Figure 53. Percent organic carbon required for organic soil material, mucky modified mineral soil material, and mineral soil material as it is related to content of clay.
 Figure 54. A redox concentration occurring as a pore lining.
-—
-Figure 55. Redox concentrations occurring as soft masses
-and pore linings. Also, a redox depletion along a root
-channel.
-—
-Figure 56. A wet Spodosol with a splotchy gray and black
-eluvial horizon above a reddish brown spodic horizon.
-—
-Figure 57. Even in wet Spodosols, the spodic horizon may
-be bright colored. If iron occurs in the horizon, redox
-concentrations may be evident in the bright spodic
-material. Some spodic horizons, however, do not have
-iron.
-—
+Figure 55. Redox concentrations occurring as soft masses and pore linings. Also, a redox depletion along a root channel.
+Figure 56. A wet Spodosol with a splotchy gray and black eluvial horizon above a reddish brown spodic horizon.
+Figure 57. Even in wet Spodosols, the spodic horizon may be bright colored. If iron occurs in the horizon, redox concentrations may be evident in the bright spodic material. Some spodic horizons, however, do not have iron.
