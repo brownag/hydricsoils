@@ -15,3 +15,15 @@
 #' @keywords datasets
 #' @references United States Department of Agriculture, Natural Resources Conservation Service. 2022. Land resource regions and major land resource areas of the United States, the Caribbean, and the Pacific Basin. U.S. Department of Agriculture, Agriculture Handbook 296. Available online: <https://www.nrcs.usda.gov/resources/data-and-reports/major-land-resource-area-mlra>
 "lrrmlra"
+
+#' hydricsoils Data Directory
+#' @returns `hydricsoils_data_dir()`: character. Path to hydricsoil package user
+#'   data directory. Default: `tools::R_user_dir("hydricsoils", which = "data")`
+#' @export
+#' @examples
+#'
+#' hydricsoils_data_dir()
+#'
+hydricsoils_data_dir <- function() {
+  tools::R_user_dir("hydricsoils", which = "data")
+}

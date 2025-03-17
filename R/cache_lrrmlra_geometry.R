@@ -29,17 +29,16 @@
 #' }
 #'
 cache_lrrmlra_geometry <- function(overwrite = FALSE,
-                                   dsn = "/vsizip//vsicurl/https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip/MLRA_52_2022") {
+                                   dsn = lrrmlra_geometry_dsn()) {
 
   if (is.null(dsn)) {
-    dsn <- "/vsizip//vsicurl/https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip/MLRA_52_2022"
+    dsn <- lrrmlra_geometry_dsn()
   }
 
-  fp <- file.path(tools::R_user_dir("hydricsoils", which = "data"),
-                  "lrrmlra.gpkg")
+  fp <- file.path(hydricsoils_data_dir(), "lrrmlra.gpkg")
 
   if (!requireNamespace("terra")) {
-    stop("package 'terra' is required to cache the LRR/MLRA spatial dataset")
+    stop("package 'terra' is required to create local MLRA Geographic Database cache")
   }
 
   if (!dir.exists(dirname(fp))) {
@@ -58,21 +57,29 @@ cache_lrrmlra_geometry <- function(overwrite = FALSE,
 #' @rdname lrrmlra-geometry
 #' @return `clear_lrrmlra_geometry()`: logical. Called for the side-effect of removing the MLRA geometry file from the cache. Returns `TRUE` if `"lrrmlra.gpkg"` is successfully removed from user data cache.
 clear_lrrmlra_geometry <- function() {
-  invisible(file.remove(file.path(
-    tools::R_user_dir("hydricsoils", which = "data"),
-    "lrrmlra.gpkg"
-  )))
+  invisible(
+    file.remove(
+      file.path(hydricsoils_data_dir(), "lrrmlra.gpkg")
+    )
+  )
 }
 
 #' @export
 #' @rdname lrrmlra-geometry
 #' @return `lrrmlra_geometry()`: A terra _SpatVector_ object containing `lrrmlra` attributes and geometry.
 lrrmlra_geometry <- function(overwrite = FALSE,
-                             dsn = "/vsizip//vsicurl/https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip/MLRA_52_2022") {
+                             dsn = lrrmlra_geometry_dsn()) {
   if (cache_lrrmlra_geometry(overwrite = overwrite, dsn = dsn)) {
-    return(terra::vect(file.path(
-      tools::R_user_dir("hydricsoils", which = "data"),
-      "lrrmlra.gpkg"
-    )))
+    return(terra::vect(
+      file.path(hydricsoils_data_dir(), "lrrmlra.gpkg")
+    ))
   }
+}
+
+#' @export
+#' @rdname lrrmlra-geometry
+#' @return `lrrmlra_geometry_dsn()`: character. Path to MLRA Geographic Database source.
+lrrmlra_geometry_dsn <- function() {
+  # "https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip/MLRA_52_2022"
+  "/vsizip//vsicurl/https://s3-fpac-nrcs-dshub-public.s3.us-gov-west-1.amazonaws.com/MLRA_52_2022.zip"
 }
