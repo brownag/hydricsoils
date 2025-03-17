@@ -34,17 +34,17 @@ indicator “A9” (also known as “1 cm Muck”).
 
 ``` r
 library(hydricsoils)
-#> hydricsoils v0.1.1 -- using:
-#>  - 'Field Indicators of Hydric Soils in the United States' v8.2 (2018)
+#> hydricsoils v0.1.2 -- using:
+#>  - 'Field Indicators of Hydric Soils in the United States' v9.0 (2024)
 #>  - 'Land Resource Regions and Major Land Resource Areas of the United States, the Caribbean, and the Pacific Basin' v5.2 (2022)
 
 data(fihs, package = "hydricsoils")
 
 subset(fihs, fihs$indicator == "A9", select = c("usage", "usage_symbols", "except_mlra"))
-#>                                                                                             usage
-#> 11 For use in LRRs D, F, G, H, P (except for MLRA 136), and T; for testing in LRRs C, I, J, and O
-#>       usage_symbols except_mlra
-#> 11 D, F, G, H, P, T         136
+#>                                                                                            usage
+#> 9 For use in LRRs D, F, G, H, P (except for MLRA 136), and T; for testing in LRRs C, I, J, and O
+#>      usage_symbols except_mlra
+#> 9 D, F, G, H, P, T         136
 ```
 
 If we load the MLRA v5.2 database using `lrrmlra_geometry()` (requires
@@ -79,23 +79,24 @@ Region”)
 subset(fihs, fihs$indicator %in% usesym_to_indicator("C"),
        select = c("indicator", "indicator_name"))
 #>    indicator              indicator_name
-#> 3         A1          Histosol or Histel
-#> 4         A2             Histic Epipedon
-#> 5         A3                Black Histic
-#> 6         A4            Hydrogen Sulfide
-#> 7         A5           Stratified Layers
-#> 13       A11 Depleted Below Dark Surface
-#> 14       A12          Thick Dark Surface
-#> 21        S1         Sandy Mucky Mineral
-#> 24        S4         Sandy Gleyed Matrix
-#> 25        S5                 Sandy Redox
-#> 26        S6             Stripped Matrix
-#> 33        F1         Loamy Mucky Mineral
-#> 34        F2         Loamy Gleyed Matrix
-#> 35        F3             Depleted Matrix
-#> 36        F6          Redox Dark Surface
-#> 37        F7       Depleted Dark Surface
-#> 38        F8           Redox Depressions
+#> 1         A1          Histosol or Histel
+#> 2         A2             Histic Epipedon
+#> 3         A3                Black Histic
+#> 4         A4            Hydrogen Sulfide
+#> 5         A5           Stratified Layers
+#> 11       A11 Depleted Below Dark Surface
+#> 12       A12          Thick Dark Surface
+#> 18       A18            Iron Monosulfide
+#> 19        S1         Sandy Mucky Mineral
+#> 22        S4         Sandy Gleyed Matrix
+#> 23        S5                 Sandy Redox
+#> 24        S6             Stripped Matrix
+#> 30        F1         Loamy Mucky Mineral
+#> 31        F2         Loamy Gleyed Matrix
+#> 32        F3             Depleted Matrix
+#> 33        F6          Redox Dark Surface
+#> 34        F7       Depleted Dark Surface
+#> 35        F8           Redox Depressions
 ```
 
 Compare to LRR “D” (also known as the “Western Range and Irrigated
@@ -105,23 +106,24 @@ Region”)
 subset(fihs, fihs$indicator %in% usesym_to_indicator("D"), 
        select = c("indicator", "indicator_name"))
 #>    indicator              indicator_name
-#> 3         A1          Histosol or Histel
-#> 4         A2             Histic Epipedon
-#> 5         A3                Black Histic
-#> 6         A4            Hydrogen Sulfide
-#> 11        A9                   1 cm Muck
-#> 13       A11 Depleted Below Dark Surface
-#> 14       A12          Thick Dark Surface
-#> 21        S1         Sandy Mucky Mineral
-#> 24        S4         Sandy Gleyed Matrix
-#> 25        S5                 Sandy Redox
-#> 26        S6             Stripped Matrix
-#> 33        F1         Loamy Mucky Mineral
-#> 34        F2         Loamy Gleyed Matrix
-#> 35        F3             Depleted Matrix
-#> 36        F6          Redox Dark Surface
-#> 37        F7       Depleted Dark Surface
-#> 38        F8           Redox Depressions
+#> 1         A1          Histosol or Histel
+#> 2         A2             Histic Epipedon
+#> 3         A3                Black Histic
+#> 4         A4            Hydrogen Sulfide
+#> 9         A9                   1 cm Muck
+#> 11       A11 Depleted Below Dark Surface
+#> 12       A12          Thick Dark Surface
+#> 18       A18            Iron Monosulfide
+#> 19        S1         Sandy Mucky Mineral
+#> 22        S4         Sandy Gleyed Matrix
+#> 23        S5                 Sandy Redox
+#> 24        S6             Stripped Matrix
+#> 30        F1         Loamy Mucky Mineral
+#> 31        F2         Loamy Gleyed Matrix
+#> 32        F3             Depleted Matrix
+#> 33        F6          Redox Dark Surface
+#> 34        F7       Depleted Dark Surface
+#> 35        F8           Redox Depressions
 ```
 
 These outputs match the information we can find in the guide in Appendix
