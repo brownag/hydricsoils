@@ -1,5 +1,5 @@
 ## code to prepare `fihs` dataset goes here
-# download.file("https://www.nrcs.usda.gov/sites/default/files/2024-09/Field-Indicators-of-Hydric-Soils.pdf",
+# download.file("https://www.nrcs.usda.gov/sites/default/files/2022-09/Field_Indicators_of_Hydric_Soils.pdf",
 #               destfile = "FIHS.pdf", mode = "wb")
 # system("pdftotext -raw -nodiag FIHS.pdf FIHS.txt")
 
@@ -7,16 +7,10 @@
 x <- readLines("inst/extdata/FIHS.txt", warn = FALSE)
 f <- readLines("inst/extdata/FIGS.txt", warn = FALSE)
 
-# clean FIGS
-cat(trimws(strsplit(paste0(f, collapse = " "), "—")[[1]]), file = "inst/extdata/FIGS.txt", sep = "\n")
-
-f <- readLines("inst/extdata/FIGS.txt", warn = FALSE)
-
-
 ## metadata, added as attributes
-VERSION <- "9.0"
-VERSION_YEAR <- "2024"
-REFERENCE <- "United States Department of Agriculture, Natural Resources Conservation Service. 2024. Field Indicators of Hydric Soils in the United States, Version 9.0. Available online: <https://www.nrcs.usda.gov/resources/guides-and-instructions/field-indicators-of-hydric-soils>"
+VERSION <- "8.2"
+VERSION_YEAR <- "2018"
+REFERENCE <- "United States Department of Agriculture, Natural Resources Conservation Service. 2018. Field Indicators of Hydric Soils in the United States, Version 8.2. L.M. Vasilas, G.W. Hurt, and J.F. Berkowitz (eds.). USDA, NRCS, in cooperation with the National Technical Committee for Hydric Soils. Available online: <https://www.nrcs.usda.gov/resources/guides-and-instructions/field-indicators-of-hydric-soils>"
 
 #
 ##
@@ -28,8 +22,7 @@ REFERENCE <- "United States Department of Agriculture, Natural Resources Conserv
 ##
 ## somehow rebuild suitable text vector from `fd` ...
 ##
-idx <- grep("^Introduction$|^All Soils$|^Sandy Soils$|^Loamy and Clayey Soils$|Test Indicators of Hydric Soils$|^References$", x)
-idx <- idx[4:8]
+idx <- grep("^All Soils$|^Sandy Soils$|^Loamy and Clayey Soils$|Test Indicators of Hydric Soils$|^\\f\\fAccessibility Statement$", x)
 x <- gsub("(for use in all LRRs) or Histel (for", "or Histel. ", x, fixed = TRUE)
 x <- gsub("use in LRRs with permafrost). ", "", x, fixed = TRUE)
 x <- gsub("from12 to18 percent", "from 12 to 18 percent", x)
@@ -41,18 +34,16 @@ x[grep("A1.\u2014", x) + 1]
 sec.idx <- c(idx - 1, length(x))
 sec.len <- diff(c(0, sec.idx))
 sec.lbl <- c("Field Indicators of Hydric Soils",
-             "Front Matter",
              "All Soils", "Sandy Soils", "Loamy and Clayey Soils",
-             # "Test Indicators",
-             # "All Soils (Test)", "Sandy Soils (Test)", "Loamy and Clayey Soils (Test)",
-             "End Matter")
+             "Test Indicators", "All Soils (Test)", "Sandy Soils (Test)",
+             "Loamy and Clayey Soils (Test)", "End Matter")
 page.idx <- grep("^\\f+", x)
 page.len <- diff(c(0, page.idx))
 page.num <- gsub("^\\f+([0-9iv]+).*(Hydric Soils|Field Indicators of)?", "\\1", x[page.idx])
 page.idx <- page.idx - 1
 page.num[1] <- "i"
-page.num[40] <- "36"
-page.num[55] <- "52"
+page.num[49] <- page.num[48]
+page.num[48] <- "46"
 page.num <- gsub("\\f", "", page.num)
 
 # break out page numbers and sections for each line of content
@@ -228,12 +219,10 @@ fihs <- fihs[c("section", "indicator", "indicator_name", "page",
 
 if (interactive())
   View(fihs)
-fihs <- fihs[-1,]
-rownames(fihs) <- NULL
+
 attr(fihs, 'version') <- VERSION
 attr(fihs, 'version_year') <- VERSION_YEAR
 attr(fihs, 'reference') <- REFERENCE
-fihs90 <- fihs
 usethis::use_data(fihs, overwrite = TRUE)
 
 ## TODO: fihs_test dataset; need to confirm where they are being tested
