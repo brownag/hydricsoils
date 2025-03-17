@@ -4,24 +4,19 @@
 \alias{cache_lrrmlra_geometry}
 \alias{clear_lrrmlra_geometry}
 \alias{lrrmlra_geometry}
+\alias{lrrmlra_geometry_dsn}
 \title{Download and Cache or Load Latest 'MLRA Geographic Database'}
 \source{
 The default source is a ZIP file containing an ESRI Shapefile. The direct download URL is \url{https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip}, which can be found \href{https://www.nrcs.usda.gov/resources/data-and-reports/major-land-resource-area-mlra}{here}.
 }
 \usage{
-cache_lrrmlra_geometry(
-  overwrite = FALSE,
-  dsn =
-    "/vsizip//vsicurl/https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip/MLRA_52_2022"
-)
+cache_lrrmlra_geometry(overwrite = FALSE, dsn = lrrmlra_geometry_dsn())
 
 clear_lrrmlra_geometry()
 
-lrrmlra_geometry(
-  overwrite = FALSE,
-  dsn =
-    "/vsizip//vsicurl/https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip/MLRA_52_2022"
-)
+lrrmlra_geometry(overwrite = FALSE, dsn = lrrmlra_geometry_dsn())
+
+lrrmlra_geometry_dsn()
 }
 \arguments{
 \item{overwrite}{Overwrite existing file? Passed to \code{terra::writeVector()}. Default: \code{FALSE}}
@@ -34,6 +29,8 @@ lrrmlra_geometry(
 \code{clear_lrrmlra_geometry()}: logical. Called for the side-effect of removing the MLRA geometry file from the cache. Returns \code{TRUE} if \code{"lrrmlra.gpkg"} is successfully removed from user data cache.
 
 \code{lrrmlra_geometry()}: A terra \emph{SpatVector} object containing \code{lrrmlra} attributes and geometry.
+
+\code{lrrmlra_geometry_dsn()}: character. Path to MLRA Geographic Database source.
 }
 \description{
 Creates a local copy of the latest 'MLRA Geographic Database' in the user's package data cache. This file/directory is separate from the package installation.

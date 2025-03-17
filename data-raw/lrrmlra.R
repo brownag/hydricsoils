@@ -1,7 +1,7 @@
 ## code to prepare `lrrmlra` dataset goes here
 library(terra)
 
-x <- vect("/vsizip//vsicurl/https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip/MLRA_52_2022")
+x <- vect(hydricsoils::lrrmlra_geometry_dsn())
 
 ## metadata, added as attributes
 VERSION <- "5.2"

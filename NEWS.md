@@ -1,3 +1,17 @@
+# Changes in version 0.1.2
+
+## Improvements
+
+ - Update `fihs` dataset for Field Indicators of Hydric Soils v9.0
+ 
+   - Adds new "All Soils" indicator: "A18" _Iron Monosulfide_
+
+ - Updated `lrrmlra` geometry source URL
+
+## Additions
+ 
+ - Added `lrrmlra_geometry_dsn()` and `hydricsoils_data_dir()` functions for getting data sources and paths
+ 
 # Changes in version 0.1.1
 
 ## Improvements
