@@ -3,13 +3,13 @@ data(fihs, package = "hydricsoils")
 has_terra_and_spatial <- !inherits(try(requireNamespace("terra", quietly = TRUE), silent = TRUE), 'try-error') && file.exists(file.path(tools::R_user_dir("hydricsoils", "data"), "lrrmlra.gpkg"))
 
 # basic checks on parsing of FIHS ----
-expect_equal(nrow(fihs), 44)
+expect_equal(nrow(fihs), 45)
 
 # Indicator A9 "1 cm Muck"  ----
 # - several LRRs in use, with an exception
 # - testing in several LRRs
 a9 <- subset(fihs, indicator == "A9")
-expect_equal(a9$page, "13")
+expect_equal(a9$page, "15")
 expect_equal(a9$usage_symbols[[1]], c("D", "F", "G", "H", "P", "T"))
 expect_equal(a9$except_mlra[[1]], "136")
 expect_equal(a9$test_symbols[[1]], c("C", "I", "J", "O"))
@@ -18,7 +18,7 @@ expect_equal(a9$test_symbols[[1]], c("C", "I", "J", "O"))
 # - approved in FIHS2018 for use in Alaska (W, X, Y LRRs)
 # - in MLRA2022 database we have W1, W2, X1, X2, and Y LRRs
 a13 <- subset(fihs, indicator == "A13")
-expect_equal(a13$page, "16")
+expect_equal(a13$page, "18")
 expect_equal(a13$usage_symbols[[1]], c("W1", "W2", "X1", "X2", "Y"))
 expect_equal(a13$except_mlra[[1]], character(0))
 expect_equal(a13$test_symbols[[1]], character(0))
@@ -28,7 +28,7 @@ expect_equal(a13$test_except_mlra[[1]], character(0))
 # - approved for use in one MLRA
 # - tested in one LRR (except for one MLRA)
 a16 <- subset(fihs, indicator == "A16")
-expect_equal(a16$page, "17")
+expect_equal(a16$page, "20")
 expect_equal(a16$usage_symbols[[1]], c("150A"))
 expect_equal(a16$except_mlra[[1]], character(0))
 expect_equal(a16$test_symbols[[1]], c("S"))
@@ -46,12 +46,17 @@ expect_equal(name_to_indicator(c("Depleted Below Dark Surface", "2 cm Muck", NA,
 
 ## indicator to usesym
 expect_equal(indicator_to_usesym(c("A11", "A10", NA, "F1", "A8")),
-             structure(list(c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "Z"), c("M", "N"), NULL, c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "O"), c("Q", "U", "V", "Z")), names = c("A11", "A10", NA, "F1", "A8")))
+             structure(list(c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W1", "W2", "X1", "X2", "Y", "Z"),
+                            c("M", "N"),
+                            NULL,
+                            c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "O"),
+                            c("Q", "U", "V", "Z")),
+                       names = c("A11", "A10", NA, "F1", "A8")))
 
 ## usesym to indicator (by symbol)
 expect_equal(usesym_to_indicator(c("18", "150A")),
-             list(`18` = c("A1", "A2", "A3", "A4", "A5", "A11", "A12", "S1", "S4", "S5", "S6", "F1", "F2", "F3", "F6", "F7", "F8"),
-                  `150A` = c("A1", "A2", "A3", "A4", "A5", "A6", "A7", "A9", "A11", "A12", "A16", "S4", "S5", "S6", "S7", "S8", "S9", "F2", "F3", "F6", "F7", "F8","F13", "F18")))
+             list(`18` = c("A1", "A2", "A3", "A4", "A5", "A11", "A12", "A18", "S1", "S4", "S5", "S6", "F1", "F2", "F3", "F6", "F7", "F8"),
+                  `150A` = c("A1", "A2", "A3", "A4", "A5", "A6", "A7", "A9", "A11", "A12", "A16", "A18", "S1", "S4", "S5", "S6", "S7", "S8", "S9", "F2", "F3", "F6", "F7", "F8","F13", "F18")))
 
 ## usesym to indicator (multisymbol)
 # gives indicators used in BOTH 18 and 150A
