@@ -1,6 +1,6 @@
 #' DATA: 'Field Indicators of Hydric Soils in the United States'
 #'
-#' This dataset is derived from the latest edition of the ['Field Indicators of Hydric Soils in the United States' (Version 8.2, 2018)](https://www.nrcs.usda.gov/sites/default/files/2022-09/Field_Indicators_of_Hydric_Soils.pdf)
+#' This dataset is derived from the latest edition of the ['Field Indicators of Hydric Soils in the United States' (Version 9.0, 2024)](https://www.nrcs.usda.gov/sites/default/files/2024-09/Field-Indicators-of-Hydric-Soils.pdf)
 #'
 #' @usage data(fihs)
 #' @keywords datasets
