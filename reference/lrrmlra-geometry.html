@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">hydricsoils</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Download and Cache or Load Latest 'MLRA Geographic Database'</h1>
-      <small class="dont-index">Source: <a href="https://github.com/brownag/hydricsoils/blob/0.1.1/R/cache_lrrmlra_geometry.R" class="external-link"><code>R/cache_lrrmlra_geometry.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/brownag/hydricsoils/blob/main/R/cache_lrrmlra_geometry.R" class="external-link"><code>R/cache_lrrmlra_geometry.R</code></a></small>
       <div class="d-none name"><code>lrrmlra-geometry.Rd</code></div>
     </div>
 
@@ -43,19 +43,13 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cache_lrrmlra_geometry</span><span class="op">(</span></span>
-<span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  dsn <span class="op">=</span></span>
-<span>    <span class="st">"/vsizip//vsicurl/https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip/MLRA_52_2022"</span></span>
-<span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cache_lrrmlra_geometry</span><span class="op">(</span>overwrite <span class="op">=</span> <span class="cn">FALSE</span>, dsn <span class="op">=</span> <span class="fu">lrrmlra_geometry_dsn</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">clear_lrrmlra_geometry</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">lrrmlra_geometry</span><span class="op">(</span></span>
-<span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  dsn <span class="op">=</span></span>
-<span>    <span class="st">"/vsizip//vsicurl/https://www.nrcs.usda.gov/sites/default/files/2022-10/MLRA_52_2022.zip/MLRA_52_2022"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">lrrmlra_geometry</span><span class="op">(</span>overwrite <span class="op">=</span> <span class="cn">FALSE</span>, dsn <span class="op">=</span> <span class="fu">lrrmlra_geometry_dsn</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">lrrmlra_geometry_dsn</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -79,6 +73,7 @@
     <p><code>cache_lrrmlra_geometry()</code>: logical. Called for the side-effect of adding the MLRA geometry file to the cache. Returns <code>TRUE</code> if the <code>"lrrmlra.gpkg"</code> file exists in the user's <code>"data"</code> cache directory.</p>
 <p><code>clear_lrrmlra_geometry()</code>: logical. Called for the side-effect of removing the MLRA geometry file from the cache. Returns <code>TRUE</code> if <code>"lrrmlra.gpkg"</code> is successfully removed from user data cache.</p>
 <p><code>lrrmlra_geometry()</code>: A terra <em>SpatVector</em> object containing <code>lrrmlra</code> attributes and geometry.</p>
+<p><code>lrrmlra_geometry_dsn()</code>: character. Path to MLRA Geographic Database source.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
