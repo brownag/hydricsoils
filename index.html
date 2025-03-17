@@ -75,17 +75,17 @@
 <p>This basic example shows how to determine the area of applicability of indicator “A9” (also known as “1 cm Muck”).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/brownag/hydricsoils/" class="external-link">hydricsoils</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; hydricsoils v0.1.1 -- using:</span></span>
-<span><span class="co">#&gt;  - 'Field Indicators of Hydric Soils in the United States' v8.2 (2018)</span></span>
+<span><span class="co">#&gt; hydricsoils v0.1.2 -- using:</span></span>
+<span><span class="co">#&gt;  - 'Field Indicators of Hydric Soils in the United States' v9.0 (2024)</span></span>
 <span><span class="co">#&gt;  - 'Land Resource Regions and Major Land Resource Areas of the United States, the Caribbean, and the Pacific Basin' v5.2 (2022)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">fihs</span>, package <span class="op">=</span> <span class="st">"hydricsoils"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">fihs</span>, <span class="va">fihs</span><span class="op">$</span><span class="va">indicator</span> <span class="op">==</span> <span class="st">"A9"</span>, select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"usage"</span>, <span class="st">"usage_symbols"</span>, <span class="st">"except_mlra"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                                                                                             usage</span></span>
-<span><span class="co">#&gt; 11 For use in LRRs D, F, G, H, P (except for MLRA 136), and T; for testing in LRRs C, I, J, and O</span></span>
-<span><span class="co">#&gt;       usage_symbols except_mlra</span></span>
-<span><span class="co">#&gt; 11 D, F, G, H, P, T         136</span></span></code></pre></div>
+<span><span class="co">#&gt;                                                                                            usage</span></span>
+<span><span class="co">#&gt; 9 For use in LRRs D, F, G, H, P (except for MLRA 136), and T; for testing in LRRs C, I, J, and O</span></span>
+<span><span class="co">#&gt;      usage_symbols except_mlra</span></span>
+<span><span class="co">#&gt; 9 D, F, G, H, P, T         136</span></span></code></pre></div>
 <p>If we load the MLRA v5.2 database using <code><a href="reference/lrrmlra-geometry.html">lrrmlra_geometry()</a></code> (requires <a href="https://github.com/rspatial/terra/" class="external-link">{terra}</a>) we can visualize the extent of where the “A9” indicator is used.</p>
 <p>There is a function in the package called <code><a href="reference/plot_indicator_usage.html">plot_indicator_usage()</a></code> which simplifies the process of loading and subsetting the geometry. It provides some simple defaults for visualizing areas where usage is “Approved”, “Excluded” or in “Testing”.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -107,45 +107,47 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">fihs</span>, <span class="va">fihs</span><span class="op">$</span><span class="va">indicator</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="reference/indicator-conversion.html">usesym_to_indicator</a></span><span class="op">(</span><span class="st">"C"</span><span class="op">)</span>,</span>
 <span>       select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"indicator"</span>, <span class="st">"indicator_name"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    indicator              indicator_name</span></span>
-<span><span class="co">#&gt; 3         A1          Histosol or Histel</span></span>
-<span><span class="co">#&gt; 4         A2             Histic Epipedon</span></span>
-<span><span class="co">#&gt; 5         A3                Black Histic</span></span>
-<span><span class="co">#&gt; 6         A4            Hydrogen Sulfide</span></span>
-<span><span class="co">#&gt; 7         A5           Stratified Layers</span></span>
-<span><span class="co">#&gt; 13       A11 Depleted Below Dark Surface</span></span>
-<span><span class="co">#&gt; 14       A12          Thick Dark Surface</span></span>
-<span><span class="co">#&gt; 21        S1         Sandy Mucky Mineral</span></span>
-<span><span class="co">#&gt; 24        S4         Sandy Gleyed Matrix</span></span>
-<span><span class="co">#&gt; 25        S5                 Sandy Redox</span></span>
-<span><span class="co">#&gt; 26        S6             Stripped Matrix</span></span>
-<span><span class="co">#&gt; 33        F1         Loamy Mucky Mineral</span></span>
-<span><span class="co">#&gt; 34        F2         Loamy Gleyed Matrix</span></span>
-<span><span class="co">#&gt; 35        F3             Depleted Matrix</span></span>
-<span><span class="co">#&gt; 36        F6          Redox Dark Surface</span></span>
-<span><span class="co">#&gt; 37        F7       Depleted Dark Surface</span></span>
-<span><span class="co">#&gt; 38        F8           Redox Depressions</span></span></code></pre></div>
+<span><span class="co">#&gt; 1         A1          Histosol or Histel</span></span>
+<span><span class="co">#&gt; 2         A2             Histic Epipedon</span></span>
+<span><span class="co">#&gt; 3         A3                Black Histic</span></span>
+<span><span class="co">#&gt; 4         A4            Hydrogen Sulfide</span></span>
+<span><span class="co">#&gt; 5         A5           Stratified Layers</span></span>
+<span><span class="co">#&gt; 11       A11 Depleted Below Dark Surface</span></span>
+<span><span class="co">#&gt; 12       A12          Thick Dark Surface</span></span>
+<span><span class="co">#&gt; 18       A18            Iron Monosulfide</span></span>
+<span><span class="co">#&gt; 19        S1         Sandy Mucky Mineral</span></span>
+<span><span class="co">#&gt; 22        S4         Sandy Gleyed Matrix</span></span>
+<span><span class="co">#&gt; 23        S5                 Sandy Redox</span></span>
+<span><span class="co">#&gt; 24        S6             Stripped Matrix</span></span>
+<span><span class="co">#&gt; 30        F1         Loamy Mucky Mineral</span></span>
+<span><span class="co">#&gt; 31        F2         Loamy Gleyed Matrix</span></span>
+<span><span class="co">#&gt; 32        F3             Depleted Matrix</span></span>
+<span><span class="co">#&gt; 33        F6          Redox Dark Surface</span></span>
+<span><span class="co">#&gt; 34        F7       Depleted Dark Surface</span></span>
+<span><span class="co">#&gt; 35        F8           Redox Depressions</span></span></code></pre></div>
 <p>Compare to LRR “D” (also known as the “Western Range and Irrigated Region”)</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">fihs</span>, <span class="va">fihs</span><span class="op">$</span><span class="va">indicator</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="reference/indicator-conversion.html">usesym_to_indicator</a></span><span class="op">(</span><span class="st">"D"</span><span class="op">)</span>, </span>
 <span>       select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"indicator"</span>, <span class="st">"indicator_name"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    indicator              indicator_name</span></span>
-<span><span class="co">#&gt; 3         A1          Histosol or Histel</span></span>
-<span><span class="co">#&gt; 4         A2             Histic Epipedon</span></span>
-<span><span class="co">#&gt; 5         A3                Black Histic</span></span>
-<span><span class="co">#&gt; 6         A4            Hydrogen Sulfide</span></span>
-<span><span class="co">#&gt; 11        A9                   1 cm Muck</span></span>
-<span><span class="co">#&gt; 13       A11 Depleted Below Dark Surface</span></span>
-<span><span class="co">#&gt; 14       A12          Thick Dark Surface</span></span>
-<span><span class="co">#&gt; 21        S1         Sandy Mucky Mineral</span></span>
-<span><span class="co">#&gt; 24        S4         Sandy Gleyed Matrix</span></span>
-<span><span class="co">#&gt; 25        S5                 Sandy Redox</span></span>
-<span><span class="co">#&gt; 26        S6             Stripped Matrix</span></span>
-<span><span class="co">#&gt; 33        F1         Loamy Mucky Mineral</span></span>
-<span><span class="co">#&gt; 34        F2         Loamy Gleyed Matrix</span></span>
-<span><span class="co">#&gt; 35        F3             Depleted Matrix</span></span>
-<span><span class="co">#&gt; 36        F6          Redox Dark Surface</span></span>
-<span><span class="co">#&gt; 37        F7       Depleted Dark Surface</span></span>
-<span><span class="co">#&gt; 38        F8           Redox Depressions</span></span></code></pre></div>
+<span><span class="co">#&gt; 1         A1          Histosol or Histel</span></span>
+<span><span class="co">#&gt; 2         A2             Histic Epipedon</span></span>
+<span><span class="co">#&gt; 3         A3                Black Histic</span></span>
+<span><span class="co">#&gt; 4         A4            Hydrogen Sulfide</span></span>
+<span><span class="co">#&gt; 9         A9                   1 cm Muck</span></span>
+<span><span class="co">#&gt; 11       A11 Depleted Below Dark Surface</span></span>
+<span><span class="co">#&gt; 12       A12          Thick Dark Surface</span></span>
+<span><span class="co">#&gt; 18       A18            Iron Monosulfide</span></span>
+<span><span class="co">#&gt; 19        S1         Sandy Mucky Mineral</span></span>
+<span><span class="co">#&gt; 22        S4         Sandy Gleyed Matrix</span></span>
+<span><span class="co">#&gt; 23        S5                 Sandy Redox</span></span>
+<span><span class="co">#&gt; 24        S6             Stripped Matrix</span></span>
+<span><span class="co">#&gt; 30        F1         Loamy Mucky Mineral</span></span>
+<span><span class="co">#&gt; 31        F2         Loamy Gleyed Matrix</span></span>
+<span><span class="co">#&gt; 32        F3             Depleted Matrix</span></span>
+<span><span class="co">#&gt; 33        F6          Redox Dark Surface</span></span>
+<span><span class="co">#&gt; 34        F7       Depleted Dark Surface</span></span>
+<span><span class="co">#&gt; 35        F8           Redox Depressions</span></span></code></pre></div>
 <p>These outputs match the information we can find in the guide in Appendix 1.</p>
 <p>It is important to remember that the area of applicability across Land Resource Regions and Major Land Resource Areas can subtly differ.</p>
 <p>The main difference between LRRs “C” and “D” is that indicator “A5” is approved for use in LRR “C” whereas “A9” is approved for use in LRR “D”. Note that while “A9” is available for testing in “C”, “A5” is not being considered for use in LRR “D”.</p>
