@@ -1,10 +1,9 @@
-pandoc: 2.19.2
-pkgdown: 2.0.7
+pandoc: 3.1.11
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   fihs: fihs.html
-last_built: 2024-02-12T14:31Z
+last_built: 2025-03-17T03:33Z
 urls:
   reference: http://humus.rocks/hydricsoils/reference
   article: http://humus.rocks/hydricsoils/articles
-
